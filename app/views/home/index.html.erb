@@ -1,0 +1,64 @@
+<div style="margin-top:25px">
+  <br/>
+<% cast_query = @casts.where(created_at: (Time.now - 1.day)..(Time.now)) %>
+<h4>LAST 24 HOURS</h4>
+<%= render 'query', :cast_query => cast_query %>
+
+<% cast_query_week = @casts.where(created_at: (Time.now - 7.day)..(Time.now - 1.day)) %>
+<% if cast_query_week.all.any? %>
+<h4>LAST 7 DAYS</h4>
+<%= render 'query', :cast_query => cast_query_week %>
+<% end %>
+
+<% cast_query_week = @casts.where(created_at: (Time.now - 30.day)..(Time.now - 7.day)) %>
+<% if cast_query_week.all.any? %>
+<h4>LAST 30 DAYS</h4>
+<%= render 'query', :cast_query => cast_query_week %>
+<% end %>
+
+<% cast_query_week = @casts.where(created_at: (Cast.order("created_at").first.created_at)..(Time.now - 31.day)) %>
+<% if cast_query_week.all.any? %>
+  <h4>30 DAYS OR OLDER</h4>
+  <%= render 'query', :cast_query => cast_query_week %>
+<% end %>
+</div>
+
+
+
+    <script>
+    ajax_voting = function(vote,cast){
+        var msg = {Cast:{"id":cast,"vote":vote}};
+        $.ajax({
+            type: 'POST',
+            url: '/vote',
+            dataType: 'json',
+            data: msg,
+
+            success: function(votevalue){
+                total_id = "#total" + cast.toString()
+
+                if (vote=="up")
+                {
+                    $( "#downvote" + cast.toString()).removeClass( "btn-danger btn-success btn-info")
+                    $( "#upvote" + cast.toString()).removeClass( "btn-success btn-info").addClass( "btn-success")
+                }
+                else
+                {
+                    $( "#upvote" + cast ).removeClass( "btn-success btn-info")
+                    $( "#downvote" + cast ).removeClass( "btn-danger btn-info").addClass( "btn-danger")
+                }
+                if (votevalue < 0)
+                {
+                    $(total_id).removeAttr("style").attr("style","color:red");
+                }
+                else {
+                    $(total_id).removeAttr("style").attr("style","color:green");
+                }
+                var votevalue_abs = Math.abs(votevalue)
+                $(total_id).html(votevalue_abs)
+
+            }
+        });
+    }
+
+</script>

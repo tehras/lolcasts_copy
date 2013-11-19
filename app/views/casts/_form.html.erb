@@ -1,0 +1,45 @@
+<%= simple_form_for(@cast) do |f| %>
+    <%= f.error_notification %>
+    <form class="form-horizontal" role="form">
+      <div class="form-inputs">
+        <div class="form-group">
+          <%= f.label ('Match Type') %>
+          <%= f.text_field :match_type, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label ('Red Team') %>
+          <%= f.text_field :red_team, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label ('Blue Team') %>
+          <%= f.text_field :blue_team, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label ('Best of') %>
+          <%= f.text_field :best_of, class:'form-control' %>
+        </div>
+        <div class="from-group">
+          <%= f.label ('Tournament Name:') %>
+          <%= f.text_field :tournament_name, class:'form-control' %>
+        </div>
+        <div class="from-group">
+          <%= f.label ('Caster/Casters: ') %>
+          <%= f.text_field :caster, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label ('Link: ') %>
+          <%= f.text_field :link, class:'form-control' %>
+        </div>
+        <%= f.hidden_field :upvote, :value => 0  %>
+        <%= f.hidden_field :downvote, :value => 0 %>
+        <%= f.hidden_field :count, :value => 0 %>
+
+        <div class="form-actions">
+          <%= f.button :submit, class:'btn btn-default' %>
+        </div>
+
+      </div>
+    </form>
+
+<% end %>
+
