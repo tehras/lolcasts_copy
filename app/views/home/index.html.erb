@@ -1,6 +1,6 @@
 <div style="margin-top:25px">
   <br/>
-  <% if @casts == nil %>
+  <% if @casts.first.id == 1 %>
 <% cast_query = @casts.where(created_at: (Time.now - 1.day)..(Time.now)) %>
 <h4>LAST 24 HOURS</h4>
 <%= render 'query', :cast_query => cast_query %>
