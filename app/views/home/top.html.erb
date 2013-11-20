@@ -1,7 +1,7 @@
-<div style="margin-top:25px">
+<div style="margin-top:10px">
   <br/>
   <h4>TOP</h4>
-  <% cast_query = Cast.joins(:votes).order("cached_votes_score").reverse_order %>
+  <% cast_query = Cast.includes(:votes).order("cached_votes_score").reverse_order %>
   <%= render 'query', :cast_query => cast_query %>
 
 </div>
