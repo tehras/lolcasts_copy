@@ -35,12 +35,13 @@ class CastsController < ApplicationController
   # GET /casts
   # GET /casts.json
   def index
-      #@casts = Cast.all
-      @cast_1=Cast.includes(:votes).order("cached_votes_score")
-      @search = @cast_1.search do
-        fulltext params[:search]
-        end
-      @casts = @search.results
+      ##@casts = Cast.all
+      #@cast_1=Cast.includes(:votes).order("cached_votes_score")
+      #@search = @cast_1.search do
+      #  fulltext params[:search]
+      #  end
+      #@casts = @search.results
+    @casts = Cast.search(params[:search])
   end
 
   # GET /casts/1
