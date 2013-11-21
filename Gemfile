@@ -16,8 +16,6 @@ gem 'rolify'
 gem 'simple_form'
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'rails_12factor'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
 gem 'jquery-rails'
 group :development do
   gem 'better_errors'

@@ -1,7 +1,7 @@
 
 <% cast_query.each  do |cast| %>
     <div style="margin-bottom: 3px">
-        <span style="color:gray">
+        <span style="color:gray; padding-bottom:4px">
           <% cast_id = cast.id %>
           <% cast_total = cast.upvotes.size - cast.downvotes.size %>
 
@@ -49,13 +49,7 @@
           </button>
           <% end %>
 
-
-
-
-
-          <button type="button" class="btn btn-default btn-xs">
-
-            <%= link_to cast, style:"text-decoration:none; background:transparent; color:black" do %>
+            <%= link_to cast, method: "get", :type=>"button", :class=>"btn btn-default btn-xs", style:"text-decoration:none; background:transparent; color:black" do %>
                 (<span style="font-style:italic; color:gray"><%= cast.match_type %></span>)
                 <span style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
                 <span style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
@@ -63,10 +57,8 @@
                 <span style="color:lightskyblue">- <%= cast.tournament_name %></span>
                 <span>, by: <%= cast.caster %></span>
                 <!--<%= cast.link %>-->
-
-                </button>
-                </span>
             <% end %>
-
+           </span>
         </div>
 <% end %>
+
