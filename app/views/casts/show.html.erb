@@ -1,4 +1,4 @@
-<div class="panel-group" id="accordion">
+<div class="panel-group" id="accordion" style="margin-top:15px">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -15,24 +15,34 @@
       </div>
     </div>
   </div>
-
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-            Game 2
-          </a>
-        </h4>
-      </div>
-      <div id="collapseOne" class="panel-collapse collapse">
-        <div class="panel-body">
-          <iframe width="560" height="315"
-                  src="<%= @cast.link2 %>">
-          </iframe>
-        </div>
+  <% if @cast.best_of > 1 %>
+  <% (2..@cast.best_of).each do |game| %>
+  <div class="panel panel-default" style="margin-top:15px">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <% if game == 2 then href_ = "#collapseTwo" end
+           if game == 3 then href_ = "#collapseThree" end
+           if game == 4 then href_ = "#collapseFour" end
+           if game == 5 then href_ = "#collapseFive" end
+           if game == 6 then href_ = "#collapseSix" end
+           if game == 7 then href_ = "#collapseSeven" end
+        %>
+        <a data-toggle="collapse" data-parent="#accordion" href=<%= href_ %>>
+          Game <%= game.to_s %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        <iframe width="560" height="315"
+                src="<%= @cast.link{game} %>">
+        </iframe>
       </div>
     </div>
+  </div>
+ </div>
+  <% end %>
+  <% end %>
 
     <!--<p id="notice"><%= notice %></p>-->
 

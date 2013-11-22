@@ -1,6 +1,18 @@
 class CastsController < ApplicationController
   before_action :set_cast, only: [:show, :edit, :update, :destroy]
-
+  #def match
+  #  Rails.logger.info("Im Here")
+  #  msg = params["Cast"]
+  #  @cast = Cast.new
+  #  @cast.match_type = msg["match"]
+  #
+  #  match_type = '3v3'
+  #  respond_to do |format|
+  #    format.html
+  #    format.json { render :json => match_type}
+  #  end
+  #
+  #end
   def vote
     msg = params["Cast"]
     @cast = Cast.find(msg["id"])

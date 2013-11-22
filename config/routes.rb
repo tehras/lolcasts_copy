@@ -3,6 +3,8 @@ Lolcasts::Application.routes.draw do
 
   post "/vote" => "casts#vote"
 
+  post "/match_type" => "casts#match"
+
   get 'top', to: 'home#top'
 
   root :to => "home#index"

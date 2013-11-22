@@ -3,43 +3,144 @@
     <form class="form-horizontal" role="form">
       <div class="form-inputs">
         <div class="form-group">
-          <%= f.label ('Match Type') %>
-          <%= f.text_field :match_type, class:'form-control' %>
+          <button style="margin-bottom:5px" type="button" class="btn" id="3v3" onclick="ajax_match('3v3')">3 v 3</button>
+          <button style="margin-bottom:5px" type="button" class="btn" id="5v5" onclick="ajax_match('5v5')">5 v 5</button>
         </div>
-        <div class="form-group">
-          <%= f.label ('Red Team') %>
-          <%= f.text_field :red_team, class:'form-control' %>
+        <%= f.hidden_field :match_type, :id=>"match_type" %>
+        <div class="form-group" id="red_team" style="display: none;">
+          <%= f.text_field :red_team, placeholder: "Red Team", class:'form-control', required:"required" %>
         </div>
-        <div class="form-group">
-          <%= f.label ('Blue Team') %>
-          <%= f.text_field :blue_team, class:'form-control' %>
+        <div class="form-group" id="blue_team" style="display: none">
+          <%= f.text_field :blue_team, placeholder: "Blue Team", class:'form-control', required:"required" %>
         </div>
-        <div class="form-group">
-          <%= f.label ('Best of') %>
-          <%= f.text_field :best_of, class:'form-control' %>
+        <div class="from-group" id="tournament_name" style="display: none" >
+          <%= f.text_field :tournament_name, placeholder: "Tournament Name", class:'form-control', required:"required" %>
         </div>
-        <div class="from-group">
-          <%= f.label ('Tournament Name:') %>
-          <%= f.text_field :tournament_name, class:'form-control' %>
+        <br/>
+        <div class="from-group" id="caster" style="display: none">
+          <%= f.text_field :caster, placeholder:"Caster/Casters", class:'form-control', required:"required" %>
         </div>
-        <div class="from-group">
-          <%= f.label ('Caster/Casters: ') %>
-          <%= f.text_field :caster, class:'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label ('Link: ') %>
-          <%= f.text_field :link, class:'form-control' %>
-        </div>
-        <%= f.hidden_field :upvote, :value => 0  %>
-        <%= f.hidden_field :downvote, :value => 0 %>
-        <%= f.hidden_field :count, :value => 0 %>
+        <br/>
+          <div class="form-group" id="best_of" style="display: none">
+            <button style="margin-bottom:5px" type="button" class="btn" id="bo1" onclick="ajax_bo('1')">BO1</button>
+            <button style="margin-bottom:5px" type="button" class="btn" id="bo3" onclick="ajax_bo('3')">BO3</button>
+            <button style="margin-bottom:5px" type="button" class="btn" id="bo5" onclick="ajax_bo('5')">BO5</button>
+            <button style="margin-bottom:5px" type="button" class="btn" id="bo7" onclick="ajax_bo('7')">BO7</button>
+          </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, class:'btn btn-default' %>
+        <div class="form-group" id="link1" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 1 Embedded Link", class:'form-control', required:"required" %>
         </div>
+        <div class="form-group" id="link2" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 2 Embedded Link", class:'form-control', required:"required" %>
+        </div>
+        <div class="form-group" id="link3" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 3 Embedded Link", class:'form-control', required:"required" %>
+        </div>
+        <div class="form-group" id="link4" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 4 Embedded Link" , class:'form-control', required:"required" %>
+        </div>
+        <div class="form-group" id="link5" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 5 Embedded Link", class:'form-control', required:"required" %>
+        </div>
+        <div class="form-group" id="link6" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 6 Embedded Link", class:'form-control', required:"required" %>
+        </div>
+        <div class="form-group" id="link7" style="display:none">
+          <%= f.text_field :link,placeholder: "Game 7 Embedded Link", class:'form-control', required:"required" %>
+        </div>
+
+        <div class="form-actions" id="submit" style="display:none">
+          <%= f.button :submit, class:'btn btn-info' %>
+        </div>
+        <%= f.hidden_field :best_of, :id=>'best_of_hidden' %>
 
       </div>
     </form>
 
 <% end %>
+
+</div>
+
+<script>
+    var previous
+    ajax_bo = function(best_of) {
+        var checker = $("#best_of_hidden").val();
+        if (checker != null)
+        {
+            $("#best_of_hidden").val("");
+            $("#bo1").removeClass("btn-success");
+            $("#bo3").removeClass("btn-success");
+            $("#bo5").removeClass("btn-success");
+            $("#bo7").removeClass("btn-success");
+            while (previous > 0)
+            {
+              $("#link"+previous).attr("style","display:none");
+               previous --;
+            }
+        }
+        $("#best_of_hidden").val(parseInt(best_of));
+        $("#bo"+best_of).addClass("btn-success");
+        var i = parseInt(best_of);
+        var n = 1;
+        previous = i;
+        while (n < i+1)
+        {
+            $("#link"+ n.toString()).removeAttr("Style");
+            n++;
+        }
+        $("#submit").removeAttr("Style");
+    }
+    ajax_match = function(match_type){
+        var checker = $("#match_type").val();
+        if (checker != null){
+            $("#match_type").val("");
+            $("#5v5").removeClass("btn-success");
+            $("#3v3").removeClass("btn-success");
+        }
+        $("#match_type").val(match_type);
+        $("#"+match_type).addClass("btn-success");
+        $("#red_team").removeAttr("style");
+        $("#blue_team").removeAttr("style");
+        $("#caster").removeAttr("Style");
+        $("#tournament_name").removeAttr("Style");
+        var red_flag
+        var blue_flag
+        var caster_flag
+        var tournament_flag
+        $("#red_team").keypress(function(){
+            red_flag = true;
+            if (caster_flag == true && blue_flag == true && tournament_flag == true)
+            {
+                $("#best_of").removeAttr("style");
+            }
+        })
+        $("#blue_team").keypress(function()
+        {
+            blue_flag = true;
+            if (red_flag == true && caster_flag == true && tournament_flag == true)
+            {
+                $("#best_of").removeAttr("style");
+            }
+        })
+        $("#caster").keypress(function()
+        {
+            caster_flag = true;
+            if (red_flag == true && blue_flag == true && tournament_flag == true)
+            {
+                $("#best_of").removeAttr("style");
+            }
+        })
+        $("#tournament_name").keypress(function()
+        {
+            tournament_flag = true;
+            if (red_flag == true && blue_flag == true && caster_flag == true)
+            {
+                $("#best_of").removeAttr("style");
+            }
+        })
+    }
+</script>
+
+
 

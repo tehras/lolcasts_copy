@@ -9,6 +9,7 @@ class Cast < ActiveRecord::Base
   #  end
   def self.search(search)
     if search
+      search = search.downcase
       Cast.where('lower(blue_team) LIKE ? OR lower(red_team) LIKE ? OR lower(caster) LIKE ? OR lower(tournament_name) LIKE ?', "%#{search}%","%#{search}%","%#{search}%","%#{search}%").includes(:votes).order("cached_votes_score").reverse_order
     else
       scoped
