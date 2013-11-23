@@ -1,0 +1,7 @@
+<div id="tag_cloud" class="col-md-4" style="margin-top:30px">
+  <h4>TOP TAGS</h4>
+  <% tag_cloud Cast.tag_counts_on(:tags).order('count desc').limit(20).shuffle, %w[s m l] do |tag, css_class| %>
+
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>

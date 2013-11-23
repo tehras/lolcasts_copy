@@ -1,18 +1,6 @@
 class CastsController < ApplicationController
   before_action :set_cast, only: [:show, :edit, :update, :destroy]
-  #def match
-  #  Rails.logger.info("Im Here")
-  #  msg = params["Cast"]
-  #  @cast = Cast.new
-  #  @cast.match_type = msg["match"]
-  #
-  #  match_type = '3v3'
-  #  respond_to do |format|
-  #    format.html
-  #    format.json { render :json => match_type}
-  #  end
-  #
-  #end
+
   def vote
     msg = params["Cast"]
     @cast = Cast.find(msg["id"])
@@ -25,35 +13,26 @@ class CastsController < ApplicationController
       format.html
       format.json { render :json => votevalue}
     end
-
-    #temp = params["Cast"]
-    #cast = Cast.find(temp["id"])
-    #user = current_user
-    #
-    #
-    #cast.update_vote(temp["vote"],temp["id"])
-    #
-    #vote = Vote.new
-    #vote.user_id = user.id
-    #vote.cast_id = cast.id
-    #vote.save
-    #
-    #respond_to do |format|
-    #  format.html {head :no_content}
-    #  format.json {head :no_content}
-    #end
   end
 
   # GET /casts
   # GET /casts.json
   def index
-      ##@casts = Cast.all
-      #@cast_1=Cast.includes(:votes).order("cached_votes_score")
-      #@search = @cast_1.search do
-      #  fulltext params[:search]
-      #  end
-      #@casts = @search.results
-    @casts = Cast.search(params[:search])
+
+    if params[:search]
+      @casts = Cast.search(params[:search])
+    else
+      @casts = Cast.all
+    end
+  end
+
+
+  def tag
+    if params[:tag]
+      @casts = Cast.tagged_with(params[:tag])
+    else
+      @casts = Cast.all
+    end
   end
 
   # GET /casts/1
@@ -73,8 +52,10 @@ class CastsController < ApplicationController
   # POST /casts
   # POST /casts.json
   def create
-    @cast = Cast.new(cast_params)
 
+    @cast = Cast.new(cast_params)
+    @cast.tag_list.add(@cast.red_team, @cast.blue_team, @cast.tournament_name, @cast.caster)
+    @cast.save
     respond_to do |format|
       if @cast.save
         format.html { redirect_to @cast, notice: 'Cast was successfully created.' }

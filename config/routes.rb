@@ -7,6 +7,8 @@ Lolcasts::Application.routes.draw do
 
   get 'top', to: 'home#top'
 
+  get 'tags/:tag', to: 'casts#tag', as: :tag
+
   root :to => "home#index"
   devise_for :users
 end

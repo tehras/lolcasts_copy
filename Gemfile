@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'rails_12factor'
 gem 'jquery-rails'
+gem 'acts-as-taggable-on'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
