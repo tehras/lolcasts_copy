@@ -15,24 +15,23 @@
       </div>
     </div>
   </div>
-  <% if @cast.best_of > 1 %>
+  <% if @cast.best_of.to_i > 1 %>
   <% (2..@cast.best_of).each do |game| %>
   <div class="panel panel-default" style="margin-top:15px">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <% if game == 2 then href_ = "#collapseTwo" end
-           if game == 3 then href_ = "#collapseThree" end
-           if game == 4 then href_ = "#collapseFour" end
-           if game == 5 then href_ = "#collapseFive" end
-           if game == 6 then href_ = "#collapseSix" end
-           if game == 7 then href_ = "#collapseSeven" end
-        %>
-        <a data-toggle="collapse" data-parent="#accordion" href=<%= href_ %>>
+        <% if game == 2 then href_ = 'collapseTwo'
+         elsif game == 3 then href_ = 'collapseThree'
+         elsif game == 4 then href_ = 'collapseFour'
+         elsif game == 5 then href_ = 'collapseFive'
+         elsif game == 6 then href_ = 'collapseSix'
+         else href_ = 'collapseSeven' end %>
+        <a data-toggle="collapse" data-parent="#accordion" href="#<%= href_ %>">
           Game <%= game.to_s %>
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="<%= href_ %>"  class="panel-collapse collapse">
       <div class="panel-body">
         <iframe width="560" height="315"
                 src="<%= @cast.link{game} %>">
@@ -40,46 +39,6 @@
       </div>
     </div>
   </div>
- </div>
   <% end %>
   <% end %>
-
-    <!--<p id="notice"><%= notice %></p>-->
-
-    <!--<p>-->
-    <!--<strong>Match type:</strong>-->
-    <!--<%= @cast.match_type %>-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<strong>Red team:</strong>-->
-    <!--<%= @cast.red_team %>-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<strong>Blue team:</strong>-->
-    <!--<%= @cast.blue_team %>-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<strong>Best of:</strong>-->
-    <!--<%= @cast.best_of %>-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<strong>Tournament name:</strong>-->
-    <!--<%= @cast.tournament_name %>-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<strong>Caster:</strong>-->
-    <!--<%= @cast.caster %>-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<strong>Link:</strong>-->
-    <!--<%= @cast.link %>-->
-    <!--</p>-->
-
-    <!--<%= link_to 'Edit', edit_cast_path(@cast) %> |-->
-    <!--<%= link_to 'Back', casts_path %>-->
+</div>
