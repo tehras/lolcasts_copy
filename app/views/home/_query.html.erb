@@ -7,15 +7,11 @@
 
           <% if !user_signed_in? %>
 
-          <button type="button" class="btn btn-xs" id="upvote<%= cast_id %>" >
             <span class="glyphicon glyphicon-arrow-up"></span>
-          </button>
 
           <span class="voteCount" id="total<%= cast_id %>" <% if cast_total >= 0 %> style="color:green" <% else %> style="color:red" <%end%>> <%= cast_total.abs %> </span>
 
-          <button type="button" class="btn btn-xs" id="downvote<%= cast_id %>">
             <span class="glyphicon glyphicon-arrow-down"></span>
-          </button>
 
           <% elsif current_user.voted_up_on? cast %>
           <button type="button" class="btn btn-success btn-xs" id="upvote<%= cast_id %>"  onclick="ajax_voting('up',<%= cast.id %>)" >

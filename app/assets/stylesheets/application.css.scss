@@ -11,15 +11,27 @@
  *= require_self
  *= require_tree .
  */
+
+.left {
+
+}
 .right {
-  border-right: 1px solid #eee;
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 20px;
 }
 
+
+#tag_cloud a:link {text-decoration:none;}
+#tag_cloud a:visited {text-decoration:none;}
+#tag_cloud a:hover {text-decoration:none; background:none; color:darkblue}
+#tag_cloud a:active {text-decoration:none;}
 #tag_cloud {
   line-height: 1.3em;
   .s { font-size: 0.5em; }
   .m { font-size: 0.85em; }
   .l { font-size: 1.2em; }
+
 }
 
 .content {
