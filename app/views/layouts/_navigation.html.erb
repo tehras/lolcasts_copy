@@ -17,54 +17,77 @@
       <li class="<%= 'active' if params[:action] == 'top' %>"><a href="/top">Top</a></li>
     </ul>
 
-      <div class="navbar-form navbar-left" >
-        <div class="form-group form-inline">
-          <%= form_tag casts_path, :method => 'get', :id => "products_search" do %>
-              <%= text_field_tag :search,  params[:search], :class=>"form-control", :style=>"width:70%", :placeholder=>"Search" %>
-              <%= submit_tag "Search", :class=>"btn btn-default", :name => nil %>
-          <% end %>
-        </div>
+    <div class="navbar-form navbar-left">
+      <div class="form-group form-inline">
+        <%= form_tag casts_path, :method => 'get', :id => "products_search" do %>
+            <%= text_field_tag :search, params[:search], :class => "form-control", :style => "width:70%", :placeholder => "Search" %>
+            <%= submit_tag "Search", :class => "btn btn-default", :name => nil %>
+        <% end %>
       </div>
+    </div>
     <ul class="nav navbar-nav navbar-right">
       <li>
         <% if user_signed_in? %>
             <%= link_to 'New Cast', new_cast_path %>
-
-      </li>
-      <li>
-        <a href="/edit_casts">Edit Casts </a>
-      </li>
+            </li>
+        <% if Cast.where(user_id: current_user).count != 0 %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit Casts <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                    <li>
+                      <a>Most Recent Created:</a>
+                      </li>
+                    <ul>
+                    <% @cast = Cast.where(user_id: current_user) %>
+                    <% @cast.last(5).each do |cast| %>
+                          <%= link_to edit_cast_path(cast), :class => "btn btn-default btn-xs", style: "text-decoration:none; background:transparent; color:black; border:none" do %>
+                              (<span style="font-style:italic; color:gray"><%= cast.match_type %></span>)
+                              <span style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
+                              <span style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
+                              <span style="color:green">[Best of <%= cast.best_of %>]</span>
+                              <span style="color:lightskyblue">- <%= cast.tournament_name %></span>
+                              <span>, by: <%= cast.caster %></span>
+                          <% end %>
+                    <% end %>
+                    </ul>
+                    <li>
+                      <a href='/edit_casts'>View All </a>
+                    </li>
+                  </ul>
+                </li>
+           <% end %>
         <% end %>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <% if user_signed_in? %>
-              <li>
-                <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-              </li>
-          <% else %>
-              <li>
-                <%= link_to 'Login', new_user_session_path %>
-              </li>
-          <% end %>
-          <% if user_signed_in? %>
-              <li>
-                <%= link_to 'Edit account', edit_user_registration_path %>
-              </li>
-              <% if current_user.has_role? :admin %>
-                  <li>
-                    <%= link_to 'Admin', users_path %>
-                  </li>
-              <% end %>
-          <% else %>
-              <li>
-                <%= link_to 'Sign up', new_user_registration_path %>
-              </li>
-          <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% if user_signed_in? %>
+                <li>
+                  <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+                </li>
+            <% else %>
+                <li>
+                  <%= link_to 'Login', new_user_session_path %>
+                </li>
+            <% end %>
+            <% if user_signed_in? %>
+                <li>
+                  <%= link_to 'Edit account', edit_user_registration_path %>
+                </li>
+                <% if current_user.has_role? :admin %>
+                    <li>
+                      <%= link_to 'Admin', users_path %>
+                    </li>
+                <% end %>
+            <% else %>
+                <li>
+                  <%= link_to 'Sign up', new_user_registration_path %>
+                </li>
+            <% end %>
+          </ul>
+        </li>
         </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- /.navbar-collapse -->
 </nav>
 
 

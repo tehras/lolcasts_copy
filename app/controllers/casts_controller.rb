@@ -1,5 +1,6 @@
 class CastsController < ApplicationController
   before_action :set_cast, only: [:show, :edit, :update, :destroy]
+  before_action :is_auth, only: [:edit, :update]
 
   def vote
     msg = params["Cast"]
@@ -47,7 +48,6 @@ class CastsController < ApplicationController
   end
   # GET /casts/1/edit
   def edit
-    @cast = Cast.find(params[:cast])
   end
 
   # POST /casts
@@ -93,14 +93,21 @@ class CastsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cast
       @cast = Cast.find(params[:id])
     end
 
+    def is_auth
+      unless current_user.id == @cast.user_id
+        redirect_to root_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def cast_params
-      params.require(:cast).permit(:match_type, :red_team, :blue_team, :best_of, :tournament_name, :caster, :link, :link2, :upvote, :downvote, :count)
+      params.require(:cast).permit(:match_type, :red_team, :blue_team, :best_of, :tournament_name, :caster, :link, :link2, :link3, :link4, :link5, :link6, :link7)
       end
-  end
+end
