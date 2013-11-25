@@ -5,10 +5,7 @@ class CastsController < ApplicationController
     msg = params["Cast"]
     @cast = Cast.find(msg["id"])
     @cast.vote :voter => current_user, :vote => msg["vote"]
-
-
     votevalue = @cast.upvotes.size - @cast.downvotes.size
-
     respond_to do |format|
       format.html
       format.json { render :json => votevalue}
@@ -45,8 +42,12 @@ class CastsController < ApplicationController
     @cast = Cast.new
   end
 
+  def edit_casts
+    @cast = Cast.all
+  end
   # GET /casts/1/edit
   def edit
+    @cast = Cast.find(params[:cast])
   end
 
   # POST /casts
@@ -56,6 +57,7 @@ class CastsController < ApplicationController
     @cast = Cast.new(cast_params)
     @cast.tag_list.add(@cast.red_team, @cast.blue_team, @cast.tournament_name, @cast.caster)
     @cast.save
+    @cast.user_id = current_user.id
     respond_to do |format|
       if @cast.save
         format.html { redirect_to @cast, notice: 'Cast was successfully created.' }

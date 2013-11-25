@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123153757) do
+ActiveRecord::Schema.define(version: 20131124152733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20131123153757) do
     t.string   "link5"
     t.string   "link6"
     t.string   "link7"
+    t.integer  "user_id"
   end
 
   add_index "casts", ["cached_votes_down"], name: "index_casts_on_cached_votes_down", using: :btree

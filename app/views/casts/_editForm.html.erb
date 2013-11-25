@@ -1,65 +1,65 @@
-<%= simple_form_for @cast do |f| %>
+<%= simple_form_for(cast) do |f| %>
     <%= f.error_notification :message => "There is a problem with one or more fields" %>
     <form class="form-horizontal" role="form">
       <div class="form-inputs">
         <div class="form-group">
-          <button style="margin-bottom:5px" type="button" class="btn" id="3v3" onclick="ajax_match('3v3')">3 v 3
+          <button style="margin-bottom:5px" type="button" class="btn <% if cast.match_type == '3v3'%>btn-success<% end %>" id="3v3" onclick="ajax_match('3v3')">3 v 3
           </button>
-          <button style="margin-bottom:5px" type="button" class="btn" id="5v5" onclick="ajax_match('5v5')">5 v 5
+          <button style="margin-bottom:5px" type="button" class="btn <% if cast.match_type == '5v5'%>btn-success<% end %>" id="5v5" onclick="ajax_match('5v5')">5 v 5
           </button>
         </div>
         <%= f.hidden_field :match_type, :id => "match_type" %>
-        <div class="form-group" id="red_team" style="display: none;">
+        <div class="form-group" id="red_team" >
           <%= f.text_field :red_team, placeholder: "Red Team", id: "red_team_field", class: 'form-control', required: "required" %>
           <span id="red_team_error" style="display:none">*Must be 2 - 8 Characters Long </span>
         </div>
-        <div class="form-group" id="blue_team" style="display: none">
+        <div class="form-group" id="blue_team" >
           <%= f.text_field :blue_team, placeholder: "Blue Team", id: "blue_team_field", class: 'form-control', required: "required" %>
           <span id="blue_team_error" style="display:none">*Must be 2 - 8 Characters Long </span>
         </div>
-        <div class="from-group" id="tournament_name" style="display: none">
+        <div class="from-group" id="tournament_name" >
           <%= f.text_field :tournament_name, placeholder: "Tournament Name", id: "tournament_name_field", class: 'form-control', required: "required" %>
           <span id="tournament_name_error" style="display:none">*Must be 2 - 15 Characters Long </span>
         </div>
         <br/>
 
-        <div class="from-group" id="caster" style="display: none">
+        <div class="from-group" id="caster" >
           <%= f.text_field :caster, placeholder: "Caster/Casters", id: "caster_field", class: 'form-control', required: "required" %>
           <span id="caster_error" style="display:none">*Must be 2 - 8 Characters Long </span>
         </div>
         <br/>
 
-        <div class="form-group" id="best_of" style="display: none">
-          <button style="margin-bottom:5px" type="button" class="btn" id="bo1" onclick="ajax_bo('1')">BO1</button>
-          <button style="margin-bottom:5px" type="button" class="btn" id="bo3" onclick="ajax_bo('3')">BO3</button>
-          <button style="margin-bottom:5px" type="button" class="btn" id="bo5" onclick="ajax_bo('5')">BO5</button>
-          <button style="margin-bottom:5px" type="button" class="btn" id="bo7" onclick="ajax_bo('7')">BO7</button>
+        <div class="form-group" id="best_of" >
+          <button style="margin-bottom:5px" type="button" class="btn <% if cast.best_of == 1%> btn-success <%end%>" id="bo1" onclick="ajax_bo('1')">BO1</button>
+          <button style="margin-bottom:5px" type="button" class="btn <% if cast.best_of == 3%> btn-success <%end%>" id="bo3" onclick="ajax_bo('3')">BO3</button>
+          <button style="margin-bottom:5px" type="button" class="btn <% if cast.best_of == 5%> btn-success <%end%>" id="bo5" onclick="ajax_bo('5')">BO5</button>
+          <button style="margin-bottom:5px" type="button" class="btn <% if cast.best_of == 7%> btn-success <%end%>" id="bo7" onclick="ajax_bo('7')">BO7</button>
         </div>
 
-        <div class="form-group" id="link1" style="display:none">
+        <div class="form-group" id="link1" >
           <%= f.text_field :link, placeholder: "Game 1 Embedded Link", id: "link1_field", class: 'form-control', required: "required" %>
         </div>
-        <div class="form-group" id="link2" style="display:none">
+        <div class="form-group" id="link2" <% if cast.best_of <2 %> style="display:none" <% end %>>
           <%= f.text_field :link2, placeholder: "Game 2 Embedded Link", id: "link2_field", class: 'form-control', required: "required" %>
         </div>
-        <div class="form-group" id="link3" style="display:none">
+        <div class="form-group" id="link3" <% if cast.best_of <3 %> style="display:none" <% end %>>
           <%= f.text_field :link3, placeholder: "Game 3 Embedded Link", id: "link3_field", class: 'form-control', required: "required" %>
         </div>
-        <div class="form-group" id="link4" style="display:none">
+        <div class="form-group" id="link4" <% if cast.best_of <4 %> style="display:none" <% end %>>
           <%= f.text_field :link4, placeholder: "Game 4 Embedded Link", id: "link4_field", class: 'form-control', required: "required" %>
         </div>
-        <div class="form-group" id="link5" style="display:none">
+        <div class="form-group" id="link5" <% if cast.best_of <5 %> style="display:none" <% end %>>
           <%= f.text_field :link5, placeholder: "Game 5 Embedded Link", id: "link5_field", class: 'form-control', required: "required" %>
         </div>
-        <div class="form-group" id="link6" style="display:none">
+        <div class="form-group" id="link6" <% if cast.best_of <6 %> style="display:none" <% end %>>
           <%= f.text_field :link6, placeholder: "Game 6 Embedded Link", id: "link6_field", class: 'form-control', required: "required" %>
         </div>
-        <div class="form-group" id="link7" style="display:none">
+        <div class="form-group" id="link7" <% if cast.best_of <7 %> style="display:none" <% end %>>
           <%= f.text_field :link7, placeholder: "Game 7 Embedded Link", id: "link7_field", class: 'form-control', required: "required" %>
         </div>
 
-        <div class="form-actions" id="submit" style="display:none">
-          <%= f.button :submit, class: 'btn btn-info' %>
+        <div class="form-actions" id="submit">
+          <%= f.button :submit, 'Update', class: 'btn btn-info' %>
         </div>
         <%= f.hidden_field :best_of, :id => 'best_of_hidden' %>
 

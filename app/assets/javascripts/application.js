@@ -43,7 +43,9 @@ ajax_bo = function(best_of) {
     }
     $("#submit").removeAttr("Style");
 }
+
 ajax_match = function(match_type){
+
     var checker = $("#match_type").val();
     if (checker != null){
         $("#match_type").val("");
@@ -56,37 +58,162 @@ ajax_match = function(match_type){
     $("#blue_team").removeAttr("style");
     $("#caster").removeAttr("Style");
     $("#tournament_name").removeAttr("Style");
-    var red_flag
-    var blue_flag
-    var caster_flag
-    var tournament_flag
-    $("#red_team").keypress(function(){
-        red_flag = true;
-        if (caster_flag == true && blue_flag == true && tournament_flag == true)
+
+    //VALIDATION
+
+    var red_team_flag = false;
+    var blue_team_flag = false;
+    var tournament_name_flag = false;
+    var caster_flag = false;
+    var link1_flag = false;
+    var link2_flag = false;
+    var link3_flag = false;
+    var link4_flag = false;
+    var link5_flag = false;
+    var link6_flag = false;
+    var link7_flag = false;
+    callError("red_team",2,8);
+    callError("blue_team",2,8);
+    callError("tournament_name",2,8);
+    callError("caster",2,14);
+
+    function callError(error,range1,range2){
+        $("#"+error+"_field").keyup( function(){
+            if( $("#"+error+"_field").val().length < range1 || $('#red_team_field').val().length >= range2 )
+            {
+                $("#"+error+"_error").removeAttr("Style");
+                $("#"+error+"_error").attr("Style","color:red");
+                if (eval(error.concat("_flag"))== red_team_flag)
+                {
+                    red_team_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== blue_team_flag)
+                {
+                    blue_team_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== tournament_name_flag)
+                {
+                    tournament_name_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== caster_flag)
+                {
+                    caster_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link1_flag)
+                {
+                    link1_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link2_flag)
+                {
+                    link2_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link3_flag)
+                {
+                    link3_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link4_flag)
+                {
+                    link4_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link5_flag)
+                {
+                    link5_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link6_flag)
+                {
+                    link6_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link7_flag)
+                {
+                    link7_flag = true;
+                }
+                else {
+
+                }
+            }
+            else
+            {
+                $("#"+error+"_error").removeAttr("Style");
+                $("#"+error+"_error").attr("Style","color:green");
+                if (eval(error.concat("_flag"))== red_team_flag)
+                {
+                    red_team_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== blue_team_flag)
+                {
+                    blue_team_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== tournament_name_flag)
+                {
+                    tournament_name_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== caster_flag)
+                {
+                    caster_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link1_flag)
+                {
+                    link1_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link2_flag)
+                {
+                    link2_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link3_flag)
+                {
+                    link3_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link4_flag)
+                {
+                    link4_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link5_flag)
+                {
+                    link5_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link6_flag)
+                {
+                    link6_flag = true;
+                }
+                else if (eval(error.concat("_flag"))== link7_flag)
+                {
+                    link7_flag = true;
+                }
+                else {
+
+                }
+            }
+
+        })
+    }
+
+    $("#red_team_field").keypress(function(){
+
+        if (caster_flag == true && blue_team_flag == true && tournament_name_flag == true)
         {
             $("#best_of").removeAttr("style");
         }
     })
-    $("#blue_team").keypress(function()
+    $("#blue_team_field").keypress(function()
     {
-        blue_flag = true;
-        if (red_flag == true && caster_flag == true && tournament_flag == true)
+
+        if (red_team_flag == true && caster_flag == true && tournament_name_flag == true)
         {
             $("#best_of").removeAttr("style");
         }
     })
-    $("#caster").keypress(function()
+    $("#caster_field").keypress(function()
     {
-        caster_flag = true;
-        if (red_flag == true && blue_flag == true && tournament_flag == true)
+
+        if (red_team_flag == true && blue_team_flag == true && tournament_name_flag == true)
         {
             $("#best_of").removeAttr("style");
         }
     })
-    $("#tournament_name").keypress(function()
+    $("#tournament_name_field").keypress(function()
     {
-        tournament_flag = true;
-        if (red_flag == true && blue_flag == true && caster_flag == true)
+
+        if (red_team_flag == true && blue_team_flag == true && caster_flag == true)
         {
             $("#best_of").removeAttr("style");
         }

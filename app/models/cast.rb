@@ -1,14 +1,24 @@
 class Cast < ActiveRecord::Base
 
+  belongs_to :user
+
   acts_as_votable
   acts_as_taggable
 
+   validates :red_team, presence: true, length: { in: 2..8,
+    too_short: "must have at least 2 letters",
+    too_long: "must be less than 9 letters"}
+   validates :blue_team, presence: true, length: { in: 2..8 ,
+                                                   too_short: "must have at least 2 letters",
+                                                   too_long: "must be less than 9 letters"}
+   validates :caster, presence: true, length: { in: 2..15 ,
+                                                too_short: "must have at least 2 letters",
+                                                too_long: "must be less than 15 letters"}
+   validates :tournament_name, presence: true, length: { in: 2..8 ,
+                                                         too_short: "must have at least 2 letters",
+                                                         too_long: "must be less than 9 letters"}
 
-  #searchable do
-  #
-  #  text :red_team, :blue_team, :tournament_name, :boost =>5
-  #  text :caster, :boost =>3
-  #  end
+
   def self.search(search)
     if search
       search = search.downcase

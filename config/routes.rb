@@ -9,6 +9,8 @@ Lolcasts::Application.routes.draw do
 
   get 'tags/:tag', to: 'casts#tag', as: :tag
 
+  get 'edit_casts', to: 'casts#edit_casts'
+
   root :to => "home#index"
   devise_for :users
 end
