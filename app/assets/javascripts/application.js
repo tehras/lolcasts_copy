@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
 
@@ -231,8 +230,6 @@ $.ajax({
 
     success: function(votevalue){
     total_id = "#total" + cast.toString()
-    alert("here");
-
     if (vote=="up")
     {
     $( "#downvote" + cast.toString()).removeClass( "btn-danger btn-success btn-info")
