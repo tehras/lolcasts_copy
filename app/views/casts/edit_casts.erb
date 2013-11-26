@@ -1,16 +1,17 @@
-<div style="margin-top:15px; resize: 200%">
-<h4>CHOOSE WHICH CAST TO EDIT</h4>
+<div style="margin-top:15px" class="col-md-8 left">
+  <h4>CHOOSE WHICH CAST TO EDIT</h4>
 <% @cast = Cast.where(user_id: current_user) %>
 <% @cast.each do |cast| %>
 <%= link_to edit_cast_path(cast), :type=>"button", :class=>"btn btn-default btn-xs", style:"text-decoration:none; background:transparent; color:black" do %>
-    (<span style="font-style:italic; color:gray"><%= cast.match_type %></span>)
-    <span style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
-    <span style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
-    <span style="color:green">[Best of <%= cast.best_of %>]</span>
-    <span style="color:lightskyblue">- <%= cast.tournament_name %></span>
+    (<span class="adjText" style="font-style:italic; color:gray"><%= cast.match_type %></span>)
+    <span class="adjText" style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
+    <span class="adjText" style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
+    <span class="adjText" style="color:green">[Best of <%= cast.best_of %>]</span>
+    <span class="adjText" style="color:lightskyblue">- <%= cast.tournament_name %></span>
     <span>, by: <%= cast.caster %></span>
     <!--<%= cast.link %>-->
 <% end %>
+      <hr style="height:5px; margin-top:0px; margin-bottom:0px; visibility:hidden;" />
 <!--<div style="margin-top:15px">-->
 
 <% end %>
