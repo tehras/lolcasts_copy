@@ -257,3 +257,5 @@ $(total_id).html(votevalue_abs)
 });
 }
 
+
+

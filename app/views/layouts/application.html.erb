@@ -22,3 +22,36 @@
 </main>
 </body>
 </html>
+
+<script>
+    //RESIZE
+    $(window).resize( function(){
+        var maxSpanW = getMaxWidth();
+        var maxDivW =  $('#divId').width();
+        var ratio = (maxDivW/maxSpanW)*80
+        var ratioS = "font-size:"+ratio.toString()+"%;"
+        $('.adjText').attr("Style",ratioS)
+        $('.divId').removeAttr("Style")
+
+    })
+
+    $(document).ready( function(){
+        var maxSpanW = getMaxWidth();
+        var maxDivW =  $('#divId').width();
+        var ratio = (maxDivW/maxSpanW)*80
+        var ratioS = "font-size:"+ratio.toString()+"%;"
+        $('.adjText').attr("Style",ratioS)
+        $('.divId').removeAttr("Style")
+
+    })
+
+    function getMaxWidth(){
+        var maxWidth = $('#spanId').width();
+        $('#spanId').siblings('span').each(function(i){
+            if(this.offsetWidth > maxWidth)
+                maxWidth = this.offsetWidth;
+        });
+        return maxWidth;
+
+    }
+</script>
