@@ -35,6 +35,8 @@ GEM
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    bigtextjs_rails (0.1.5)
+      railties (>= 3.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.0.2.1)
@@ -163,6 +165,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_votable (~> 0.8.0)
   better_errors
+  bigtextjs_rails
   binding_of_caller
   bootstrap-sass (>= 3.0.0.0)
   cancan

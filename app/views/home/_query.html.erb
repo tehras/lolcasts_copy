@@ -1,14 +1,13 @@
+<div id="divId">
 <% cast_query.each do |cast| %>
-    <div style="margin-bottom: 3px; ">
-        <span style="color:gray; padding-bottom:4px">
+        <span id="spanId" style="color:gray; padding-bottom:4px; ">
           <% cast_id = cast.id %>
           <% cast_total = cast.upvotes.size - cast.downvotes.size %>
           <% if !user_signed_in? %>
 
             <span class="glyphicon glyphicon-arrow-up"></span>
 
-          <span class="voteCount" id="total<%= cast_id %>"
-                <% if cast_total >= 0 %> style="color:green" <% else %> style="color:red" <% end %>> <%= cast_total.abs %> </span>
+          <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" id="total<%= cast_id %>"> <%=cast_total.abs%> </span>
 
             <span class="glyphicon glyphicon-arrow-down"></span>
 
@@ -17,8 +16,7 @@
             <span class="glyphicon glyphicon-arrow-up"></span>
           </button>
 
-          <span class="voteCount" id="total<%= cast_id %>"
-                <% if cast_total >= 0 %> style="color:green" <% else %> style="color:red" <% end %>> <%= cast_total.abs %> </span>
+          <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" id="total<%= cast_id %>"><%=cast_total.abs%></span>
 
           <button type="button" class="btn btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= cast.id %>)">
             <span class="glyphicon glyphicon-arrow-down"></span>
@@ -28,8 +26,7 @@
             <span class="glyphicon glyphicon-arrow-up"></span>
           </button>
 
-          <span class="voteCount" id="total<%= cast_id %>"
-                <% if cast_total >= 0 %> style="color:green" <% else %> style="color:red" <% end %>> <%= cast_total.abs %> </span>
+          <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" id="total<%= cast_id %>"><%=cast_total.abs%></span>
 
           <button type="button" class="btn btn-danger btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= cast.id %>)">
             <span class="glyphicon glyphicon-arrow-down"></span>
@@ -46,19 +43,79 @@
             <span class="glyphicon glyphicon-arrow-down"></span>
           </button>
           <% end %>
-
-          <%= link_to cast, method: "get", :type => "button", :class => "btn btn-default btn-xs", style: "text-decoration:none; background:transparent; color:black" do %>
-                (<span style="font-style:italic; color:gray"><%= cast.match_type %></span>)
-                <span style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
-                <span style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
-                <span style="color:green">[Best of <%= cast.best_of %>]</span>
-                <span style="color:lightskyblue">- <%= cast.tournament_name %></span>
-                <span>, by: <%= cast.caster %></span>
-              <!--<%= cast.link %>-->
+          <span id="spanWidth">
+          <%= link_to cast, method: "get", :type => "button", :class => "btn btn-default btn-xs", style: "text-decoration:none; background:transparent; color:black, display:inline" do %>
+                (<span class="adjText" id="matchTypeCSS" ><%= cast.match_type %></span>)
+                <span class="adjText" id="redTeamCSS" ><%= cast.red_team %></span> vs
+                <span class="adjText" id="blueTeamCSS" ><%= cast.blue_team %></span>
+                <span class="adjText" id="bestOfCSS" >[Best of <%= cast.best_of %>]</span>
+                <span class="adjText" id="tournamentNameCSS" >- <%= cast.tournament_name %></span>
+                <span class="adjText" id="casterCSS">, by: <%= cast.caster %></span>
             <% end %>
-           </span>
-    </div>
+          </span>
+        </span>
+      <hr style="height:5px; margin-top:0px; margin-bottom:0px; visibility:hidden;" />
+
 <% end %>
+  </div>
+
+<script>
+  $(document).ready( function(){
+  var maxSpanW = getMaxWidth();
+  var maxDivW =  $('#divId').width();
+  var ratio = maxDivW*70/maxSpanW;
+  var ratioS = "font-size:"+ratio.toString()+"%;"
+  $('.adjText').attr("Style",ratioS)
+
+  })
+
+  function getMaxWidth(){
+      var maxWidth = 0;
+      $('#spanId').siblings('span').each(function(i){
+          if(this.offsetWidth > maxWidth)
+              maxWidth = this.offsetWidth;
+      });
+      return maxWidth;
+  }
+</script>
+
+<script>
+ajax_voting = function(vote,cast){
+var msg = {Cast:{"id":cast,"vote":vote}};
+$.ajax({
+type: 'POST',
+url: '/vote',
+dataType: 'json',
+data: msg,
+
+success: function(votevalue){
+total_id = "#total" + cast.toString()
+
+if (vote=="up")
+{
+$( "#downvote" + cast.toString()).removeClass( "btn-danger btn-success btn-info")
+$( "#upvote" + cast.toString()).removeClass( "btn-success btn-info").addClass( "btn-success")
+}
+else
+{
+$( "#upvote" + cast ).removeClass( "btn-success btn-info")
+$( "#downvote" + cast ).removeClass( "btn-danger btn-info").addClass( "btn-danger")
+}
+if (votevalue < 0)
+{
+$(total_id).removeAttr("style").attr("style","color:red");
+}
+else {
+$(total_id).removeAttr("style").attr("style","color:green");
+}
+var votevalue_abs = Math.abs(votevalue)
+$(total_id).html(votevalue_abs)
+
+}
+});
+}
+</script>
+
 
 
 

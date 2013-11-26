@@ -10,8 +10,9 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="jquery.fittext.js"></script>
   <script>
-      jQuery("#responsive_headline").fitText();
+      jQuery("#responsive_headline").fitText(1);
   </script>
+
 </head>
 <body>
 <%# application layout styled for Twitter Bootstrap 3.0 %>
@@ -19,7 +20,7 @@
   <%= render 'layouts/navigation' %>
 </header>
 <main id="main" role="main" style="background-color:transparent">
-  <div class="container" style="width:auto">
+  <div class="container" style="width: 100%">
         <%= render 'layouts/messages' %>
         <%= yield %>
   </div>

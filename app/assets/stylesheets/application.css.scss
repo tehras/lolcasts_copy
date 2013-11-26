@@ -12,10 +12,24 @@
  *= require_tree .
  */
 
+#matchTypeCSS {font-style:italic; color:gray;}
+#redTeamCSS {color:red; font-weight:bold;}
+#blueTeamCSS {color:blue; font-weight:bold;}
+#bestOfCSS {color:green; font-weight:bold;}
+#tournamentNameCSS {color:lightskyblue;}
+#casterCSS {}
+.voteGreen{
+  color:green;
+}
+.voteRed{
+  color:red;
+}
+
 
 .left {
 
 }
+
 .right {
   border-left: 1px solid #000000;
   border-bottom: 1px solid #000000;
