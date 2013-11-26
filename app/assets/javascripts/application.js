@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require bootstrap
-//= require bigtext
 //= require_tree .
 
 var previous
@@ -219,5 +219,41 @@ ajax_match = function(match_type){
             $("#best_of").removeAttr("style");
         }
     })
+}
+
+ajax_voting = function(vote,cast){
+    var msg = {Cast:{"id":cast,"vote":vote}};
+$.ajax({
+    type: 'POST',
+    url: '/vote',
+    dataType: 'json',
+    data: msg,
+
+    success: function(votevalue){
+    total_id = "#total" + cast.toString()
+    alert("here");
+
+    if (vote=="up")
+    {
+    $( "#downvote" + cast.toString()).removeClass( "btn-danger btn-success btn-info")
+    $( "#upvote" + cast.toString()).removeClass( "btn-success btn-info").addClass( "btn-success")
+    }
+else
+{
+    $( "#upvote" + cast ).removeClass( "btn-success btn-info")
+    $( "#downvote" + cast ).removeClass( "btn-danger btn-info").addClass( "btn-danger")
+    }
+if (votevalue < 0)
+{
+    $(total_id).removeAttr("style").attr("style","color:red");
+    }
+else {
+    $(total_id).removeAttr("style").attr("style","color:green");
+    }
+var votevalue_abs = Math.abs(votevalue)
+$(total_id).html(votevalue_abs)
+
+}
+});
 }
 

@@ -15,8 +15,8 @@ class CastsController < ApplicationController
 
   # GET /casts
   # GET /casts.json
-  def index
 
+  def index
     if params[:search]
       @casts = Cast.search(params[:search])
     else
