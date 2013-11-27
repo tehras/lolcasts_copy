@@ -11,9 +11,20 @@
  *= require_self
  *= require_tree .
  */
-#matchTypeCSS {font-style:italic; color:gray;}
+
+h4{
+
+}
+body{
+  background: url('ios-linen.jpg');
+}
+
+#spanId{
+  color:#ffffff
+}
+#matchTypeCSS {}
 #redTeamCSS {color:red; font-weight:bold;}
-#blueTeamCSS {color:blue; font-weight:bold;}
+#blueTeamCSS {color:dodgerblue; font-weight:bold;}
 #bestOfCSS {color:green; font-weight:bold;}
 #tournamentNameCSS {color:lightskyblue;}
 #casterCSS {}
@@ -72,5 +83,3 @@
   min-width: 25px;
   text-align: center;
 }
-
-a:hover {text-decoration:none}

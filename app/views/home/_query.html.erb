@@ -1,7 +1,7 @@
 
 <div id="divId" class="divId">
 <% cast_query.each do |cast| %>
-        <div id="spanId" style="color:gray; padding-left: 2px">
+        <div id="spanId" style="color:#ffffff; padding-left: 2px">
           <% cast_id = cast.id %>
           <% cast_total = cast.upvotes.size - cast.downvotes.size %>
           <% if !user_signed_in? %>
@@ -45,7 +45,7 @@
           </button>
           <% end %>
           <span id="spanWidth">
-          <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "text-decoration:none; background:transparent; color:black, display:inline" do %>
+          <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "display:inline" do %>
                 (<span class="adjText" id="matchTypeCSS" ><%= cast.match_type %></span>)
                 <span class="adjText" id="redTeamCSS" ><%= cast.red_team %></span> vs
                 <span class="adjText" id="blueTeamCSS" ><%= cast.blue_team %></span>
