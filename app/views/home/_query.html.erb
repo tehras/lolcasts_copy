@@ -61,7 +61,43 @@
  </div>
 
 
+<script>
+    $(document).ready(function() {
+        var width = $('#spanId').width();
+        if (width > 1000){
+            $('.adjText').attr("Style","font-size:125%")
+        }
+        else if (width > 750)
+        {
+            $('.adjText').attr("Style","font-size:110%")
+        }
+        else if (width > 500)
+        {
+            $('.adjText').attr("Style","font-size:95%")
+        }
+        else {
+            $('.adjText').attr("Style","font-size:80%")
+        }
+    })
+    $(window).resize(function() {
+        var width = $('#spanId').width();
+        if (width > 1000){
+            $('.adjText').attr("Style","font-size:125%")
+        }
+        else if (width > 750)
+        {
+            $('.adjText').attr("Style","font-size:110%")
+        }
+        else if (width > 500)
+        {
+            $('.adjText').attr("Style","font-size:95%")
+        }
+        else {
+            $('.adjText').attr("Style","font-size:80%")
+        }
+    })
 
+</script>
 
 
 
