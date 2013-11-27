@@ -16,7 +16,8 @@ h4{
 
 }
 body{
-  background: url('ios-linen.jpg');
+  background: url('league_logo.jpg');
+  background-size: cover;
 }
 
 #spanId{
@@ -41,8 +42,8 @@ body{
 }
 
 .right {
-  border-left: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  border-left: 1px solid dimgray;
+  border-bottom: 1px solid dimgray;
   padding-bottom: 20px;
 }
 
