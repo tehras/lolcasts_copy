@@ -15,6 +15,23 @@
 h4{
 
 }
+
+#tag_cloud{
+  padding: 20px;
+  background: gray;
+  /* Fallback for web browsers that don't support RGBa */
+  background-color: rgb(0, 0, 0);
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px lightgray, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  font-weight: normal;
+}
 body{
   background: url('league_logo.jpg');
   background-size: cover;

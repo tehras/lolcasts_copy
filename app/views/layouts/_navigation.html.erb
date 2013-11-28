@@ -18,12 +18,12 @@
     </ul>
 
     <div class="navbar-form navbar-left">
-      <div class="form-group form-inline">
+      <span class="form-group form-inline">
         <%= form_tag casts_path, :method => 'get', :id => "products_search" do %>
-            <%= text_field_tag :search, params[:search], :class => "form-control", :style => "width:70%", :placeholder => "Search" %>
+            <%= text_field_tag :search, params[:search], :class => "form-control", :style => "width:65%", :placeholder => "Search" %>
             <%= submit_tag "Search", :class => "btn btn-default", :name => nil %>
         <% end %>
-      </div>
+      </span>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li>

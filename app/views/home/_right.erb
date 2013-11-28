@@ -1,4 +1,5 @@
 <div id="tag_cloud" class="col-md-4 right" style="margin-top:30px">
+  <div>
   <h4>TOP TAGS</h4>
 
   <% if Cast.tag_counts_on(:tags).empty? %>
@@ -8,5 +9,14 @@
     <%= link_to tag.name, tag_path(tag.name), class: css_class + ' adjText' %>
   <% end %>
       <% end %>
+  </div>
+
+  <br/>
+
+  <div>
+  <h4>OUTSIDE LINKS</h4>
+    <a href="http://www.leagueoflegends.com" style="margin:0px"><%= image_tag("League_of_Legends_logo.png", alt:"LoL Website", width:'120px',style:'margin:0') %></a>
+  </div>
 
 </div>
+
