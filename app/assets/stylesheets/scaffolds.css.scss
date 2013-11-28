@@ -30,6 +30,8 @@ a {
   &:hover {
     color: white;
     background-color: white;
+    opacity: .5;
+    box-shadow: 0 0 0 2px white, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
   }
 }
 
