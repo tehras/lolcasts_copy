@@ -1,6 +1,6 @@
-<div id="tag_cloud" class="col-md-4 right" style="margin-top:30px">
-  <div>
-  <h4>TOP TAGS</h4>
+<div id="tag_cloud" class="col-md-4 " style="margin-top:30px">
+  <div class="right">
+  <h4 style="text-align: center">TOP TAGS</h4>
 
   <% if Cast.tag_counts_on(:tags).empty? %>
   No Tags Found!
@@ -13,10 +13,14 @@
 
   <br/>
 
-  <div>
-  <h4>OUTSIDE LINKS</h4>
-    <a href="http://www.leagueoflegends.com" style="margin:0px"><%= image_tag("League_of_Legends_logo.png", alt:"LoL Website", width:'120px',style:'margin:0') %></a>
-  </div>
+<div class="right">
+  <h4 style="text-align: center">OUTSIDE LINKS</h4>
+
+    <a href="http://www.leagueoflegends.com" style="margin:0px"><%= image_tag("League_of_Legends_logo.png", alt:"LoL Website", width:'45%',style:'margin:0') %></a>
+    <a href="http://www.lolcounter.com" style="padding-left: 20px; margin:0px"><%= image_tag("lol-Counter.png", alt:"LoL Counter", width:'45%',style:'margin:0') %></a>
+   <a href="http://www.lolking.com"><%= image_tag("lol-king.png", alt:"LoL King", width:'45%',style:'margin:0') %></a>
+  <a href="http://www.leagueoflegendsstreams.com/" style="padding-left: 20px"><%= image_tag("lol-streams.png", alt:"LoL Streams", width:'45%',style:'margin:0') %></a>
+</div>
 
 </div>
 

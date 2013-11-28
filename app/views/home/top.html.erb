@@ -1,9 +1,11 @@
 <div class="row">
-  <div style="margin-top:10px" class="col-md-8 left">
+  <div style="margin-top:10px" class="col-md-6 left">
   <br/>
   <h4>TOP</h4>
   <% cast_query = Cast.includes(:votes).order("cached_votes_score").reverse_order %>
   <%= render 'query', :cast_query => cast_query %>
   </div>
+  <div style="margin-top:10px" class="col-md-2 center">
+    </div>
   <%= render 'right'  %>
 </div>

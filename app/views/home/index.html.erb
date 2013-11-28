@@ -1,11 +1,10 @@
 
 <div class="row">
-<div style="margin-top:10px" class="col-md-8 left">
-
+<div style="margin-top:10px" class="col-md-6 left">
+<h3 style="text-align: center">REPLAYS AND CASTS</h3>
 <% if @casts.empty? %>
-<h4>LIST IS EMPTY</h4>
+<h4 >LIST IS EMPTY</h4>
 <% else %>
-  <br/>
 <% cast_query = @casts.where(created_at: (Time.now - 1.day)..(Time.now)).includes(:votes).order("cached_votes_score").reverse_order %>
 <% if cast_query.all.any? %>
 <h4>LAST 24 HOURS</h4>
@@ -31,6 +30,8 @@
 <% end %>
 
 </div>
+  <div style="margin-top:10px" class="col-md-2">
+  </div>
 
 <%= render 'right'%>
 </div>
