@@ -1,5 +1,10 @@
 // import the CSS framework
 @import "bootstrap";
+.dropdown-menu {
+  background-color: lightgray;
+}
+
+
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: #ffffff;
   background-color: transparent; }

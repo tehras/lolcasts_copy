@@ -1,39 +1,40 @@
 <div class="row">
-<div style="margin-top:30px" class="col-md-7 left">
+  <div style="margin-top:30px" class="col-md-7 left">
 
-<h3 style="text-align: center; color:#A3A3A3;">REPLAYS AND CASTS</h3>
-<% if @casts.empty? %>
-<h4 >LIST IS EMPTY</h4>
-<% else %>
-<% cast_query = @casts.where(created_at: (Time.now - 1.day)..(Time.now)).includes(:votes).order("cached_votes_score").reverse_order %>
-<% if cast_query.all.any? %>
-<h4>LAST 24 HOURS</h4>
-<%= render 'query', :cast_query => cast_query %>
-<% end %>
+    <h3 style="text-align: center; color:#A3A3A3;">REPLAYS AND CASTS</h3>
+    <% if @casts.empty? %>
+        <h4>LIST IS EMPTY</h4>
+    <% else %>
+        <% cast_query = @casts.where(created_at: (Time.now - 1.day)..(Time.now)).includes(:votes).order("cached_votes_score").reverse_order %>
+        <% if cast_query.all.any? %>
+            <h4>LAST 24 HOURS</h4>
+            <%= render 'query', :cast_query => cast_query %>
+        <% end %>
 
-<% cast_query_week = @casts.where(created_at: (Time.now - 7.day)..(Time.now - 1.day)).includes(:votes).order("cached_votes_score").reverse_order %>
-<% if cast_query_week.all.any? %>
-<h4>LAST 7 DAYS</h4>
-<%= render 'query', :cast_query => cast_query_week %>
-<% end %>
+        <% cast_query_week = @casts.where(created_at: (Time.now - 7.day)..(Time.now - 1.day)).includes(:votes).order("cached_votes_score").reverse_order %>
+        <% if cast_query_week.all.any? %>
+            <h4>LAST 7 DAYS</h4>
+            <%= render 'query', :cast_query => cast_query_week %>
+        <% end %>
 
-<% cast_query_week = @casts.where(created_at: (Time.now - 30.day)..(Time.now - 7.day)).includes(:votes).order("cached_votes_score").reverse_order %>
-<% if cast_query_week.all.any? %>
-<h4>LAST 30 DAYS</h4>
-<%= render 'query', :cast_query => cast_query_week %>
-<% end %>
+        <% cast_query_week = @casts.where(created_at: (Time.now - 30.day)..(Time.now - 7.day)).includes(:votes).order("cached_votes_score").reverse_order %>
+        <% if cast_query_week.all.any? %>
+            <h4>LAST 30 DAYS</h4>
+            <%= render 'query', :cast_query => cast_query_week %>
+        <% end %>
 
-<% cast_query_week = @casts.where(created_at: (Cast.order("created_at").first.created_at)..(Time.now - 31.day)).includes(:votes).order("cached_votes_score").reverse_order %>
-<% if cast_query_week.all.any? %>
-  <h4>30 DAYS OR OLDER</h4>
-  <%= render 'query', :cast_query => cast_query_week %>
-<% end %>
+        <% cast_query_week = @casts.where(created_at: (Cast.order("created_at").first.created_at)..(Time.now - 31.day)).includes(:votes).order("cached_votes_score").reverse_order %>
+        <% if cast_query_week.all.any? %>
+            <h4>30 DAYS OR OLDER</h4>
+            <%= render 'query', :cast_query => cast_query_week %>
+        <% end %>
 
-</div>
-  <div style="margin-top:10px" class="col-md-1">
-  </div>
+        </div>
+        <div style="margin-top:10px" class="col-md-1">
+        </div>
 
-<%= render 'right'%>
-</div>
-<% end %>
+        <%= render 'right' %>
+        </div>
+    <% end %>
+
 
