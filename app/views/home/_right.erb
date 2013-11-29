@@ -5,7 +5,7 @@
   No Tags Found!
       <% else %>
   <% tag_cloud Cast.tag_counts_on(:tags).order('count desc').limit(20).shuffle, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class + ' adjText' %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class + ' adjText', style: "border-right: 1px solid white" %> |
   <% end %>
       <% end %>
   </div>
@@ -15,10 +15,11 @@
 <div class="right">
   <h4 style="text-align: center">OUTSIDE LINKS</h4>
 
-    <a href="http://www.leagueoflegends.com" style="margin:0px"><%= image_tag("League_of_Legends_logo.png", alt:"LoL Website", width:'45%',style:'margin:0') %></a>
-    <a href="http://www.lolcounter.com" style="padding-left: 20px; margin:0px"><%= image_tag("lol-Counter.png", alt:"LoL Counter", width:'45%',style:'margin:0') %></a>
-   <a href="http://www.lolking.com"><%= image_tag("lol-king.png", alt:"LoL King", width:'45%',style:'margin:0') %></a>
-  <a href="http://www.leagueoflegendsstreams.com/" style="padding-left: 20px"><%= image_tag("lol-streams.png", alt:"LoL Streams", width:'45%',style:'margin:0') %></a>
+    <a target="_blank" href="http://www.leagueoflegends.com" style="margin:0px"><%= image_tag("League_of_Legends_logo.png", alt:"LoL Website", width:'45%',style:'margin:0') %></a>
+    <a target="_blank" href="http://www.lolcounter.com" style="padding-left: 20px; margin:0px"><%= image_tag("lol-Counter.png", alt:"LoL Counter", width:'45%',style:'margin:0') %></a>
+   <a target="_blank" href="http://www.lolking.com"><%= image_tag("lol-king.png", alt:"LoL King", width:'45%',style:'margin:0') %></a>
+  <a target="_blank" href="http://www.leagueoflegendsstreams.com/" style="padding-left: 20px"><%= image_tag("lol-streams.png", alt:"LoL Streams", width:'45%',style:'margin:0') %></a>
+
 </div>
 
 </div>

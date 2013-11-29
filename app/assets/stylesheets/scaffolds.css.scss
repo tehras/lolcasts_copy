@@ -10,9 +10,10 @@ p, ol, ul, td {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  color: lightblue;
 }
 
-h4 {
+h4, h3 {
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
@@ -23,7 +24,6 @@ pre {
 }
 
 a {
-  color: lightgray;
   &:visited {
     color: white;
   }
@@ -31,7 +31,27 @@ a {
     color: white;
     background-color: white;
     opacity: .5;
+  }
+}
+
+b {
+  color: white;
+  &:visited {
+    color:white;
+  }
+  &:hover {
+    cursor: pointer;
+    color: black;
+    background-color: white;
     box-shadow: 0 0 0 2px white, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  }
+}
+c {
+  &:visited {
+  }
+  &:hover {
+    cursor: pointer;
+    color: black;
   }
 }
 

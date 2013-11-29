@@ -11,6 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+.form-group {
+  margin-left: auto;
+  margin-right: auto;
+}
 .leftMain {
   font-size-adjust: 1.2;
 }
@@ -20,6 +25,23 @@
 
 }
 
+.cast-view{
+  padding: 5px;
+  background: gray;
+  /* Fallback for web browsers that don't support RGBa */
+  background-color: rgb(0, 0, 0);
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
+  font-weight: normal;
+
+}
 .left{
   border-collapse:separate;
   border-spacing:10px 50px;
@@ -90,7 +112,7 @@ body{
 
 
 .left {
-
+  margin-top: 20px;
 }
 
 .right {
@@ -108,9 +130,9 @@ body{
   line-height: 1.15em;
 
 
-  .s { font-size: 0.5em;}
-  .m { font-size: 0.8em;}
-  .l { font-size: 1.1em;}
+  .s { font-size: 0.5em; color: lightblue}
+  .m { font-size: 0.8em; color: dodgerblue}
+  .l { font-size: 1.1em; color: lightsteelblue}
 
 }
 
@@ -127,7 +149,6 @@ body{
 }
 
 .form-inputs {
-  width: 50%;
   margin-bottom:150px;
 }
 

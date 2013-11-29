@@ -1,18 +1,71 @@
-<div style="margin-top:15px" class="col-md-8 left">
-  <h4>CHOOSE WHICH CAST TO EDIT</h4>
+<div class="row">
+<div id="spanId" style="margin-top:30px" class="col-md-7 left">
+  <h3 style="text-align:center; color:#A3A3A3;">EDIT CASTS</h3>
 <% @cast = Cast.where(user_id: current_user) %>
 <% @cast.each do |cast| %>
-<%= link_to edit_cast_path(cast), :type=>"button", :class=>"btn btn-default btn-xs", style:"text-decoration:none; background:transparent; color:black" do %>
-    (<span class="adjText" style="font-style:italic; color:gray"><%= cast.match_type %></span>)
-    <span class="adjText" style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
-    <span class="adjText" style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
-    <span class="adjText" style="color:green">[Best of <%= cast.best_of %>]</span>
-    <span class="adjText" style="color:lightskyblue">- <%= cast.tournament_name %></span>
-    <span>, by: <%= cast.caster %></span>
+<span id="spanWidth">
+<%= link_to edit_cast_path(cast), :type=>"button", :class=>"btn btn-xs" do %>
+    (<span class="adjText leftMain" id="matchTypeCSS"><%= cast.match_type %></span>)
+    <span class="adjText leftMain" id="redTeamCSS" ><%= cast.red_team %></span> vs
+    <span class="adjText leftMain" id="blueTeamCSS"><%= cast.blue_team %></span>
+    <span class="adjText leftMain" id="bestOfCSS">[Best of <%= cast.best_of %>]</span>
+    <span class="adjText leftMain" id="tournamentNameCSS" >- <%= cast.tournament_name %></span>
+    <span class="adjText leftMain" id="casterCSS">, by: <%= cast.caster %></span>
     <!--<%= cast.link %>-->
-<% end %>
+  <% end %>
+</span>
+
       <hr style="height:5px; margin-top:0px; margin-bottom:0px; visibility:hidden;" />
-<!--<div style="margin-top:15px">-->
 
 <% end %>
 </div>
+<div class="col-md-1">
+</div>
+  <%= render('home/right')%>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var width = $('#spanId').width();
+        if (width > 1000){
+            $('.adjText').attr("Style","font-size:175%")
+            $('.leftMain').attr("style","font-size:190%")
+        }
+        else if (width > 750)
+        {
+            $('.adjText').attr("Style","font-size:150%")
+            $('.leftMain').attr("style","font-size:170%")
+        }
+        else if (width > 500)
+        {
+            $('.adjText').attr("Style","font-size:125%")
+            $('.leftMain').attr("style","font-size:140%")
+        }
+        else {
+            $('.adjText').attr("Style","font-size:100%")
+            $('.leftMain').attr("style","font-size:110%")
+        }
+    })
+    $(window).resize(function() {
+        var width = $('#spanId').width();
+        if (width > 1000){
+            $('.adjText').attr("Style","font-size:175%")
+            $('.leftMain').attr("style","font-size:190%")
+        }
+        else if (width > 750)
+        {
+            $('.adjText').attr("Style","font-size:150%")
+            $('.leftMain').attr("style","font-size:170%")
+        }
+        else if (width > 500)
+        {
+            $('.adjText').attr("Style","font-size:125%")
+            $('.leftMain').attr("style","font-size:140%")
+        }
+        else {
+            $('.adjText').attr("Style","font-size:100%")
+            $('.leftMain').attr("style","font-size:110%")
+        }
+    })
+
+</script>

@@ -1,11 +1,11 @@
 <div class="row">
-  <div style="margin-top:10px" class="col-md-6 left">
-  <br/>
+  <div style="margin-top:30px" class="col-md-7 left">
+<h3 style="text-align: center; color:#A3A3A3;">REPLAYS AND CASTS</h3>
   <h4>TOP</h4>
   <% cast_query = Cast.includes(:votes).order("cached_votes_score").reverse_order %>
   <%= render 'query', :cast_query => cast_query %>
   </div>
-  <div style="margin-top:10px" class="col-md-2 center">
+  <div style="margin-top:10px" class="col-md-1 center">
     </div>
   <%= render 'right'  %>
 </div>
