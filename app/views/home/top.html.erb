@@ -1,11 +1,38 @@
-<div class="row">
-  <div style="margin-top:30px" class="col-md-7 left">
-<h3 style="text-align: center; color:#A3A3A3;">REPLAYS AND CASTS</h3>
-  <h4>TOP</h4>
-  <% cast_query = Cast.includes(:votes).order("cached_votes_score").reverse_order %>
-  <%= render 'query', :cast_query => cast_query %>
-  </div>
-  <div style="margin-top:10px" class="col-md-1 center">
+<body style="background-color: #3498db">
+<br/>
+<br/>
+<br/>
+
+<div class="container eternity-form dark">
+  <div class="registration-form-section" style="max-width:90%">
+    <div class="section-title reg-header animated fadeInDown">
+      <h3 style="color:#3498db">Top Replays and Casts</h3>
+
     </div>
-  <%= render 'right'  %>
+    <div class="clearfix">
+      <div class="col-md-8 registration-left-section  animated fadeInUp">
+        <div class="reg-content">
+          <div class="textbox-wrap">
+            <% if @casts.empty? %>
+                <h4 class="h3headerTop" style="color:#3498db">LIST IS EMPTY</h4>
+            <% else %>
+                <h4 class="h3headerTop" style="color:#3498db">TOP LIST</h4>
+                <% cast_query = Cast.includes(:votes).order("cached_votes_score").reverse_order %>
+                <%= render 'query', :cast_query => cast_query %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render 'right' %>
+    </div>
+  </div>
+
 </div>
+<br/>
+<br/>
+<br/>
+
+</body>
+
+
+

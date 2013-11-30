@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: rgba(0, 0, 0, 0.5);">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #444444">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -31,9 +31,9 @@
             <%= link_to 'New Cast', new_cast_path %>
             </li>
         <% if Cast.where(user_id: current_user).count != 0 %>
-            <li class="dropdown <%= 'active' if params[:action] == 'edit' || params[:action] == 'edit_casts' %>" >
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit Casts <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+            <li class="dropdown <%= 'active' if params[:action] == 'edit' || params[:action] == 'edit_casts' %>" style="background-color: #444444" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Edit Casts <b class="caret"></b></a>
+              <ul class="dropdown-menu" style="background-color: #444444">
                     <li>
                       <a>Most Recent Created:</a>
                       </li>
@@ -59,7 +59,7 @@
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= if user_signed_in? then current_user.email else " My Account" end %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="background-color: #444444">
             <% if user_signed_in? %>
                 <li>
                   <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>

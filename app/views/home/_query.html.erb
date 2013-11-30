@@ -1,7 +1,7 @@
 
-<div id="divId" class="divId">
+<div id="divId" class="divId" style="padding-left:0px;margin-left:0px">
 <% cast_query.each do |cast| %>
-        <div id="spanId" style="color:#ffffff; padding-left: 2px">
+        <div id="spanId" style="border-bottom:2px solid <%= if params[:action] == 'top'|| params[:action] == 'tag' then ' #3498db' elsif params[:action] == 'index' then ' #34dbce' end %>">
           <% cast_id = cast.id %>
           <% cast_total = cast.upvotes.size - cast.downvotes.size %>
           <% if !user_signed_in? %>
@@ -44,8 +44,8 @@
             <span class="glyphicon glyphicon-arrow-down"></span>
           </button>
           <% end %>
-          <span id="spanWidth">
-          <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "display:inline" do %>
+          <span id="spanWidth" style="color:orange">
+          <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style:"color:orange" do %>
                 (<span class="adjText leftMain" id="matchTypeCSS" ><%= cast.match_type %></span>)
                 <span class="adjText leftMain" id="redTeamCSS" ><%= cast.red_team %></span> vs
                 <span class="adjText leftMain" id="blueTeamCSS" ><%= cast.blue_team %></span>
@@ -55,58 +55,10 @@
             <% end %>
           </span>
         </div>
-      <hr style="height:5px; margin-top:0px; margin-bottom:0px; visibility:hidden;" />
+      <!--<hr style="height:5px; margin-top:0px; margin-bottom:0px; visibility:hidden;" />-->
 
 <% end %>
  </div>
-
-
-<script>
-    $(document).ready(function() {
-        var width = $('#spanId').width();
-        if (width > 1000){
-            $('.adjText').attr("Style","font-size:175%")
-            $('.leftMain').attr("style","font-size:190%")
-        }
-        else if (width > 750)
-        {
-            $('.adjText').attr("Style","font-size:150%")
-            $('.leftMain').attr("style","font-size:170%")
-        }
-        else if (width > 500)
-        {
-            $('.adjText').attr("Style","font-size:125%")
-            $('.leftMain').attr("style","font-size:140%")
-        }
-        else {
-            $('.adjText').attr("Style","font-size:100%")
-            $('.leftMain').attr("style","font-size:110%")
-        }
-    })
-    $(window).resize(function() {
-        var width = $('#spanId').width();
-        if (width > 1000){
-            $('.adjText').attr("Style","font-size:175%")
-            $('.leftMain').attr("style","font-size:190%")
-        }
-        else if (width > 750)
-        {
-            $('.adjText').attr("Style","font-size:150%")
-            $('.leftMain').attr("style","font-size:170%")
-        }
-        else if (width > 500)
-        {
-            $('.adjText').attr("Style","font-size:125%")
-            $('.leftMain').attr("style","font-size:140%")
-        }
-        else {
-            $('.adjText').attr("Style","font-size:100%")
-            $('.leftMain').attr("style","font-size:110%")
-        }
-    })
-
-</script>
-
 
 
 

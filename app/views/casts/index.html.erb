@@ -1,15 +1,33 @@
-
-<div class="row">
-  <div style="margin-top:30px" class="col-md-6 left">
-  <br/>
-<h4>SEARCHES</h4>
-
-<%= render 'home/query', :cast_query => @casts %>
-</div>
-  <div style="margin-top:10px" class="col-md-2 center">
+<body style="background-color: #34dbce">
+<br/>
+<br/>
+<br/>
+<div class="container eternity-form dark">
+  <div class="registration-form-section" style="max-width:90%">
+    <div class="section-title reg-header animated fadeInDown">
+      <h3>Search Results</h3>
     </div>
-<%= render 'home/right'%>
+    <div class="clearfix">
+      <div class="col-md-8 registration-left-section animated fadeInUp">
+        <div class="reg-content">
+          <div class="textbox-wrap">
+            <h4 class="h3header" style="color:#34dbce">Search Results</h4>
+            <%= render 'home/query', :cast_query => @casts %>
+          </div>
+        </div>
+      </div>
+      <%= render 'home/right' %>
+    </div>
+  </div>
+
 </div>
+<br/>
+<br/>
+<br/>
+</body>
+
+
+
 
 
 

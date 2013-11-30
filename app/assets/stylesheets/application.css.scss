@@ -10,153 +10,211 @@
  *
  *= require_self
  *= require_tree .
- */
+*/
+.fixed-side-social-container{right:0;width:60px;position:fixed;top:30%;background-repeat:no-repeat;z-index:10}
+.fixed-side-social-container .social-icon{float:right;width:60px;filter:alpha(opacity=75);moz-opacity:.75;-khtml-opacity:.75;opacity:.75;display:block;background-repeat:no-repeat;height:60px;-webkit-transition:all ease .2s;-moz-transition:all ease .2s;-o-transition:all ease .2s;-ms-transition:all ease .2s;transition:all ease .2s;background-position:0 0}
+.fixed-side-social-container .social-icon{background-image:url("http://demos.urprofile.net/images/social-media.png")}
+.fixed-side-social-container .social-icon:hover{width:75px;filter:alpha(opacity=99);moz-opacity:.99;-khtml-opacity:.99;opacity:.99}
+.fixed-side-social-container .linkedin-icon{background-position:0 0}
+.fixed-side-social-container .twitter-icon{background-position:0 -61px}
+.fixed-side-social-container .facebook-icon{background-position:0 -122px}
+.fixed-side-social-container .google-icon{background-position:0 -186px}
 
-.form-group {
-  margin-left: auto;
-  margin-right: auto;
+//.form-group {
+//  margin-left: auto;
+//  margin-right: auto;
+//}
+//.leftMain {
+//  font-size-adjust: 1.2;
+//}
+//
+//.img{
+//  display:inline;
+//
+//}
+//
+//.cast-view{
+//  padding: 5px;
+//  background: gray;
+//  /* Fallback for web browsers that don't support RGBa */
+//  background-color: rgb(0, 0, 0);
+//  /* RGBa with 0.6 opacity */
+//  background-color: rgba(0, 0, 0, 0.2);
+//  /* For IE 5.5 - 7*/
+//  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+//  /* For IE 8*/
+//  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+//  color: #ffffff;
+//  border-radius: 10px;
+//  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
+//  font-weight: normal;
+//
+//}
+//.left{
+//  border-collapse:separate;
+//  border-spacing:10px 50px;
+//  padding: 20px;
+//  background: gray;
+//  /* Fallback for web browsers that don't support RGBa */
+//  background-color: rgb(0, 0, 0);
+//  /* RGBa with 0.6 opacity */
+//  background-color: rgba(0, 0, 0, 0.2);
+//  /* For IE 5.5 - 7*/
+//  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+//  /* For IE 8*/
+//  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+//  color: #ffffff;
+//  border-radius: 10px;
+//  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
+//  font-weight: normal;
+//}
+//.right,{
+//  padding: 20px;
+//  background: gray;
+//  /* Fallback for web browsers that don't support RGBa */
+//  background-color: rgb(0, 0, 0);
+//  /* RGBa with 0.6 opacity */
+//  background-color: rgba(0, 0, 0, 0.2);
+//  /* For IE 5.5 - 7*/
+//  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+//  /* For IE 8*/
+//  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+//  color: #ffffff;
+//  border-radius: 10px;
+//  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+//  font-weight: normal;
+//}
+//body{
+//  background: url('league_logo.jpg');
+//  background-size: cover;
+//}
+//
+//#spanWidth{
+//  color:#ffffff;
+//  background: gray;
+//  /* Fallback for web browsers that don't support RGBa */
+//  background-color: rgb(0, 0, 0);
+//  /* RGBa with 0.6 opacity */
+//  background-color: rgba(0, 0, 0, 0.2);
+//  /* For IE 5.5 - 7*/
+//  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+//  /* For IE 8*/
+//  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+//  color: #ffffff;
+//  border-radius: 5px;
+//  box-shadow: 0 0 0 2px #3D3D3D, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
+//  font-weight: normal;
+//}
+
+#spanWidth a:hover,a:focus{
+  opacity:.8;
+  .adjText{
+  }
 }
-.leftMain {
-  font-size-adjust: 1.2;
+h4 {
+  padding-top:20px;
+  font-weight: 400;
+}
+.textbox-wrap{
+ padding-bottom:20px;
+}
+.h3headerTop{
+  padding-left:30px;
+  border-bottom: 4px solid #3498db;
+  color:#3498db;
+  padding-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.h3header{
+  padding-left:30px;
+  border-bottom: 4px solid #34dbce;
+  padding-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#spanId{
+  padding-top:5px;
+  padding-left:30px;
+  padding-bottom:5px;
+}
+.adjText{
+  font-size:120%
 }
 
-.img{
-  display:inline;
-
-}
-
-.cast-view{
-  padding: 5px;
-  background: gray;
-  /* Fallback for web browsers that don't support RGBa */
-  background-color: rgb(0, 0, 0);
-  /* RGBa with 0.6 opacity */
-  background-color: rgba(0, 0, 0, 0.2);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-  /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
-  font-weight: normal;
-
-}
-.left{
-  border-collapse:separate;
-  border-spacing:10px 50px;
-  padding: 20px;
-  background: gray;
-  /* Fallback for web browsers that don't support RGBa */
-  background-color: rgb(0, 0, 0);
-  /* RGBa with 0.6 opacity */
-  background-color: rgba(0, 0, 0, 0.2);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-  /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
-  font-weight: normal;
-}
-.right,{
-  padding: 20px;
-  background: gray;
-  /* Fallback for web browsers that don't support RGBa */
-  background-color: rgb(0, 0, 0);
-  /* RGBa with 0.6 opacity */
-  background-color: rgba(0, 0, 0, 0.2);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-  /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 0 4px #4C4C4C, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-  font-weight: normal;
-}
-body{
-  background: url('league_logo.jpg');
-  background-size: cover;
-}
-
-#spanWidth{
-  color:#ffffff;
-  background: gray;
-  /* Fallback for web browsers that don't support RGBa */
-  background-color: rgb(0, 0, 0);
-  /* RGBa with 0.6 opacity */
-  background-color: rgba(0, 0, 0, 0.2);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-  /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-  color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0 0 0 2px #3D3D3D, 2px 1px 6px 4px rgba(10, 10, 0, 0.3);
-  font-weight: normal;
-}
 #matchTypeCSS {}
 #redTeamCSS {color:red; font-weight:bold;}
 #blueTeamCSS {color:dodgerblue; font-weight:bold;}
-#bestOfCSS {color:green; font-weight:bold;}
+#bestOfCSS {color:darkseagreen; font-weight:bold;}
 #tournamentNameCSS {color:lightskyblue;}
 #casterCSS {}
 .voteGreen{
   color:green;
+  font-weight:bold;
 }
 .voteRed{
   color:red;
 }
+//
+//
+//.left {
+//  margin-top: 20px;
+//}
+//
+//.right {
+//  border-left: 1px solid dimgray;
+//  border-bottom: 1px solid dimgray;
+//  padding-bottom: 20px;
+//}
+//
+//
 
 
-.left {
-  margin-top: 20px;
-}
-
-.right {
-  border-left: 1px solid dimgray;
-  border-bottom: 1px solid dimgray;
-  padding-bottom: 20px;
-}
-
-
-#tag_cloud a:link {text-decoration:none;}
-#tag_cloud a:visited {text-decoration:none;}
-#tag_cloud a:hover {text-decoration:none; background:none; color:gray}
-#tag_cloud a:active {text-decoration:none;}
-#tag_cloud {
+.textbox-wrap a:link {text-decoration:none;}
+.textbox-wrap a:visited {text-decoration:none;}
+.textbox-wrap a:hover {text-decoration:none; background:none; color:#000000}
+.textbox-wrap a:active {text-decoration:none;}
+.textbox-wrap {
   line-height: 1.15em;
 
 
-  .s { font-size: 0.5em; color: lightblue}
-  .m { font-size: 0.8em; color: dodgerblue}
-  .l { font-size: 1.1em; color: lightsteelblue}
+  .s { font-size: 0.65em; color: darkorange}
+  .m { font-size: 1.0em; color: orange}
+  .l { font-size: 1.35em; color: coral}
 
 }
-
-.content {
-  background-color: #eee;
-  padding: 20px;
-  margin: 0 -20px;
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
-
-.form-inputs {
-  margin-bottom:150px;
-}
-
+//
+//.content {
+//  background-color: #eee;
+//  padding: 20px;
+//  margin: 0 -20px;
+//  -webkit-border-radius: 0 0 6px 6px;
+//  -moz-border-radius: 0 0 6px 6px;
+//  border-radius: 0 0 6px 6px;
+//  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+//  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+//  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+//}
+//
+//.form-inputs {
+//  margin-bottom:150px;
+//}
+//
 .voteCount {
   display: inline-block;
   min-width: 25px;
   text-align: center;
 }
 
+a {
+  color: #34dbce;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #34dbce;
+  text-decoration: none;
+}
+//
 
 
