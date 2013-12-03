@@ -15,6 +15,7 @@
     <ul class="nav navbar-nav">
       <li class="<%= 'active' if params[:action] == 'index' %>"><%= link_to "All", root_path %></li>
       <li class="<%= 'active' if params[:action] == 'top' %>"><a href="/top">Top</a></li>
+      <li class="<%= 'active' if params[:action] == 'all_streams' %>"><a href="/all_streams">Streams</a></li>
     </ul>
 
     <div class="navbar-form navbar-left">
@@ -35,23 +36,24 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Edit Casts <b class="caret"></b></a>
               <ul class="dropdown-menu" style="background-color: #444444">
                     <li>
-                      <a>Most Recent Created:</a>
+                      <span style="padding-left:20px; color: <%= if params[:action] == 'top'|| params[:action] == 'tag' then ' #3498db' elsif params[:action] == 'index' then ' #34dbce' end %>">Most Recent Created:</span>
                       </li>
                     <ul>
                     <% @cast = Cast.where(user_id: current_user) %>
                     <% @cast.last(5).each do |cast| %>
-                          <%= link_to edit_cast_path(cast), :class => "btn btn-default btn-xs", style: "text-decoration:none; background:transparent; color:black; border:none" do %>
-                              (<span style="font-style:italic; color:gray"><%= cast.match_type %></span>)
-                              <span style="color:red; font-weight:bold"><%= cast.red_team %></span> vs
-                              <span style="color:blue; font-weight:bold"><%= cast.blue_team %></span>
-                              <span style="color:green">[Best of <%= cast.best_of %>]</span>
-                              <span style="color:lightskyblue">- <%= cast.tournament_name %></span>
-                              <span>, by: <%= cast.caster %></span>
+                          <%= link_to edit_cast_path(cast), :class => "btn btn-default btn-xs", style: "color:orange;background:transparent;border:none" do %>
+                              (<span class="adjText leftMain" id="matchTypeCSS"><%= cast.match_type %></span>)
+                              <span class="adjText leftMain" id="redTeamCSS"><%= cast.red_team %></span> vs
+                              <span class="adjText leftMain" id="blueTeamCSS"><%= cast.blue_team %></span>
+                              <span class="adjText leftMain" id="bestOfCSS">[Best of <%= cast.best_of %>]</span>
+                              <span class="adjText leftMain" id="tournamentNameCSS">- <%= cast.tournament_name %></span>
+                              <span class="adjText leftMain" id="casterCSS">, by: <%= cast.caster %></span>
+
                           <% end %>
                     <% end %>
                     </ul>
                     <li>
-                      <a href='/edit_casts'>View All </a>
+                      <a style="color: <%= if params[:action] == 'top'|| params[:action] == 'tag' then ' #3498db' elsif params[:action] == 'index' then ' #34dbce' end %>" href='/edit_casts'>View All </a>
                     </li>
                   </ul>
                 </li>
@@ -62,7 +64,7 @@
           <ul class="dropdown-menu" style="background-color: #444444">
             <% if user_signed_in? %>
                 <li>
-                  <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+                  <%= link_to 'Logout', destroy_user_session_path, :method => 'delete', class:'session_path' %>
                 </li>
             <% else %>
                 <li>

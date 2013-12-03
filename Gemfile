@@ -17,7 +17,7 @@ gem 'acts_as_votable', '~> 0.8.0'
 gem 'rails_12factor'
 gem 'acts-as-taggable-on'
 gem 'simple_form'
-gem 'twitch'
+gem 'twitch', '= 0.0.2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

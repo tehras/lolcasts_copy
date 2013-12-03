@@ -1,0 +1,64 @@
+<body style="background-color: #3498db">
+<br/>
+<br/>
+<br/>
+
+<div class="container eternity-form dark">
+  <div class="registration-form-section" style="max-width:90%">
+    <div class="section-title reg-header animated fadeInDown">
+      <h3 style="color:#3498db">All Streams</h3>
+
+    </div>
+    <div class="clearfix">
+      <div class="col-md-8 registration-left-section animated fadeInUp" style="min-height:1000px">
+        <div class="reg-content">
+          <div class="textbox-wrap" style="padding-left:5%;padding-top:5%;padding-right:3%">
+            <% json = JSON.parse(@twitch.getStreams(game:"League of Legends").to_json)['body']['streams'] %>
+            <%  length = json.length - 1 %>
+
+            <table class="table table-condensed">
+              <thead style="color:#3498db">
+                <td>
+                  STATUS
+                </td>
+                <td>
+                  NAME
+                </td>
+                <td>
+                  VIEWERS
+                </td>
+              </thead>
+              <tbody >
+              <% (0..length).each do |i| %>
+                  <% stream = json[i].values_at('channel')[0].values_at("name")[0] %>
+                <tr style="border-top-color:#3498db">
+                <td style="color:orange;border-top-color:#3498db">
+                  <%= link_to stream_path(:stream=>stream), :type=>"button", :class=>"btn btn-xs", style:"color:orange" do %>
+                <%= json[i].values_at('channel')[0].values_at("status")[0].first(35)%>...
+                <% end %>
+                </td>
+                <td style="color:coral;font-weight:bold;border-top-color:#3498db">
+                  <%= link_to stream_path(:stream=>stream), :type=>"button", :class=>"btn btn-xs", style:"color:coral;font-weight:bold" do %>
+                  <%= json[i].values_at('channel')[0].values_at("display_name")[0] %>
+                  <% end %>
+                </td>
+                <td style="color:darkorange;border-top-color:#3498db">
+                  <%= json[i].values_at('viewers')[0] %>
+                </td>
+              </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <%= render 'right' %>
+    </div>
+  </div>
+
+</div>
+<br/>
+<br/>
+<br/>
+
+</body>

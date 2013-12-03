@@ -1,7 +1,7 @@
 <div class="col-sm-4 registration-right-section animated fadeInUp">
   <div class="reg-content">
     <div class="textbox-wrap" style="padding-right:30px;padding-left:30px">
-      <h4 style="margin-top:0px;text-align: center;color:<%= '#34dbce' if params[:action] == 'index'%><%= '#3498db'if params[:action] == 'top'|| params[:action] == 'tag'%>">TOP TAGS</h4>
+      <h4 style="margin-top:0px;text-align: center;color:<%= '#34dbce' if params[:action] == 'index'%><%= '#3498db'if params[:action] == 'top'|| params[:action] == 'tag' || params[:action] == 'all_streams'%>">TOP TAGS</h4>
       <% if Cast.tag_counts_on(:tags).empty? %>
           No Tags Found!
       <% else %>
@@ -13,10 +13,27 @@
   </div>
 </div>
 
+<div class="col-sm-4 registration-right-section animated fadeInUp" style="<%= 'display:none' if params[:action]=='all_streams'%>">
+  <div class="reg-content" align="center">
+    <div class="textbox-wrap">
+      <h4 style="text-align: center; margin-top:0px;color:<%= '#34dbce' if params[:action] == 'index'%><%= '#3498db'if params[:action] == 'top'|| params[:action]=='tag' || params[:action] == 'all_streams'%>" >TOP STREAMS</h4>
+
+      <% json = JSON.parse(@twitch.getStreams(game:"League of Legends").to_json)['body']['streams'] %>
+      <%  length = json.length - 1 %>
+      <% json %>
+      <% (0..length).first(15).each do |i| %>
+          <% stream = json[i].values_at('channel')[0].values_at("name")[0] %>
+          <span id="spanWidth" style="color:orange; width:80%"><%= link_to stream_path(:stream=>stream), :type=>"button", :class=>"btn btn-xs", :Style=>"color:orange" do %><span><%= json[i].values_at('channel')[0].values_at("status")[0].first(15) %>... ( <%= json[i].values_at('channel')[0].values_at("display_name")[0] %> ) </span><span style="color:darkorange">      -    <%= json[i].values_at('viewers')[0] %> <% end %></span></span></br>
+      <% end %>
+      <%= link_to "View All", all_streams_path, :type=>"button", :class=>"btn btn-xs", :Style=>"color:orange" %>
+    </div>
+  </div>
+</div>
+
 <div class="col-sm-4 registration-right-section animated fadeInUp">
   <div class="reg-content" align="center">
     <div class="textbox-wrap">
-      <h4 style="text-align: center; margin-top:0px;color:<%= '#34dbce' if params[:action] == 'index'%><%= '#3498db'if params[:action] == 'top'|| params[:action]=='tag' %>" >OUTSIDE LINKS</h4>
+      <h4 style="text-align: center; margin-top:0px;color:<%= '#34dbce' if params[:action] == 'index'%><%= '#3498db'if params[:action] == 'top'|| params[:action]=='tag' || params[:action] == 'all_streams'%>" >OUTSIDE LINKS</h4>
 
       <a target="_blank" style="padding-top:20px" href="http://www.leagueoflegends.com"><%= image_tag("League_of_Legends_logo.png", alt:"LoL Website", width:'45%') %></a>
       <br/>
@@ -33,3 +50,4 @@
     </div>
   </div>
 </div>
+

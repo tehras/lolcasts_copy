@@ -26,6 +26,12 @@ class CastsController < ApplicationController
 
 
   def tag
+    @twitch = Twitch.new({
+                             :client_id => @client_id,
+                             :secret_key => @secret_key,
+                             :redirect_uri => @redirect_uri,
+                             :scope => @scope
+                         })
     if params[:tag]
       @casts = Cast.tagged_with(params[:tag])
     else

@@ -2,12 +2,102 @@
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true, class:"input-group" %>
+  <%= f.input :name, :autofocus => true, class:"form-control:", :placeholder=>"Name" %>
   <%= f.input :email, :required => true %>
   <%= f.input :password, :required => true %>
   <%= f.input :password_confirmation, :required => true %>
   <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-<% end %>
+
 
 
 <%= render "devise/shared/links" %>
+
+
+<body style="background-color: grey">
+<br />
+<br />
+<br />
+<div class="container eternity-form">
+  <div class="registration-form-section">
+    <form>
+      <div class="section-title reg-header animated fadeInDown">
+        <h3>Create Your Account </h3>
+
+      </div>
+      <div class="clearfix">
+        <div class="col-sm-6 registration-left-section  animated fadeInUp">
+          <div class="reg-content">
+            <div class="form-field-login" >
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <%= f.text_field :name, :autofocus => true, class:"form-control", :placeholder=>"Name" %>
+              </div>
+            </div>
+            <div class="form-field-login">
+              <div class="input-group">
+                <span class="input-group-addon "><i class="glyphicon glyphicon-envelope"></i></span>
+
+                <%= f.input :email, label:false, :placholder=>"E-Mail", :html=>{class:"form-control"}, :required => true %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 registration-right-section animated fadeInUp">
+          <div class="reg-content">
+            <div class="form-field-login">
+              <div class="input-group">
+                <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
+                <%= f.text_field :password, placeholder:"Password", class:"form-control", :required => true %>
+              </div>
+            </div>
+            <div class="form-field-login">
+              <div class="input-group">
+                <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
+                <%= f.text_field :password_confirmation, placeholder:"Confirm-Password", class:"form-control", :required => true %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<% end %>
+      <div class="registration-form-action clearfix animated fadeInUp">
+        <a href="#" class="btn btn-success pull-left blue-btn ">
+          <i class="glyphicon glyphicon-chevron-left"></i>&nbsp; &nbsp;Back To Login
+        </a>
+        <button type="submit" class="btn btn-success pull-right green-btn ">Register Now &nbsp; </button>
+        <%= link_to "Register Now", new_registration_path(resource_name), class:"btn btn-success pull-right green-btn" %> <!--<i class="glyphicon glyphicon-chevron-right"></i>-->
+      </div>
+    </form>
+  </div>
+
+</div>
+<br />
+<br />
+<br />
+
+<script type="text/javascript">
+    $(function () {
+
+        //Custom Checkbox For Light Theme
+        $("input").iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            increaseArea: '20%'
+        });
+
+
+        //Custom Checkbox For Dark Theme
+        $(".dark input").iCheck({
+            checkboxClass: 'icheckbox_polaris',
+            increaseArea: '20%'
+        });
+
+
+        //TextBox Focus Event
+        $(".form-control").focus(function () {
+            $(this).closest(".textbox-wrap").addClass("focused");
+        }).blur(function () {
+                    $(this).closest(".textbox-wrap").removeClass("focused");
+                });
+
+    });
+</script>

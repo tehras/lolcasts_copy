@@ -11,6 +11,10 @@ Lolcasts::Application.routes.draw do
 
   get 'edit_casts', to: 'casts#edit_casts'
 
+  get 'stream', to: 'home#stream'
+
+  get 'all_streams', to: 'home#all_streams'
+
   root :to => "home#index"
   devise_for :users
 end
