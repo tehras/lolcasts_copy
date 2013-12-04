@@ -1,102 +1,146 @@
-<div class="row">
-<div class="col-md-2 showVoteCast" style="width: 8%;
-        margin: 0 auto;">
-  <% cast_id = @cast.id %>
-  <% cast_total = @cast.upvotes.size - @cast.downvotes.size %>
-  <% if !user_signed_in? %>
+<br/>
+<br/>
+<br/>
+<body style="background-color:#34dbce">
+<div class="container eternity-form dark">
+  <div class="row">
+    <div class="col-md-2 showVoteCast registration-left-section  animated fadeInUp" style="width: 8%;
+            margin: 0 auto;">
+        </div>
 
-      <span class="glyphicon glyphicon-arrow-up"></span>
 
-      <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" style="font-size: 150%; padding-bottom:-2px" id="total<%= cast_id %>"> <%=cast_total.abs%> </span>
+  <div class="col-md-8 registration-left-section  animated fadeInUp">
+    <div class="reg-content">
+      <div class="textbox-wrap showCast">
+        <div align="center" style="padding-top:15px;padding-bottom:15px; border-bottom: 1px solid #34dbce;color:orange">
+            <h4>
+            (<span class="adjText leftMain" id="matchTypeCSS" ><%= @cast.match_type %></span>)
+            <span class="adjText leftMain" id="redTeamCSS" ><%= @cast.red_team %></span> vs
+            <span class="adjText leftMain" id="blueTeamCSS" ><%= @cast.blue_team %></span>
+            <span class="adjText leftMain" id="bestOfCSS" >[Best of <%= @cast.best_of %>]</span>
+            <span class="adjText leftMain" id="tournamentNameCSS" >- <%= @cast.tournament_name %></span>
+            <span class="adjText leftMain" id="casterCSS">, by: <%= @cast.caster %></span>
+            </h4>
+        </div>
 
-      <span class="glyphicon glyphicon-arrow-down"></span>
+        <div class="cast-view">
+          <div class="panel-heading" style="border-bottom: 1px solid #34dbce; color:orange">
+            <h4 class="panel-title">
+              <b class="replay" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Game 1
+              </b>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <iframe width="560" height="315"
+                      src="<%= @cast.link %>">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <% if @cast.best_of.to_i > 1 %>
+            <% (2..@cast.best_of).each do |game| %>
+                <div class="cast-view" style="margin-top:15px">
+                  <div class="panel-heading" style="border-bottom: 1px solid #34dbce; color:orange">
+                    <h4 class="panel-title">
+                      <% if game == 2 then
+                           href_ = 'collapseTwo'
+                         elsif game == 3 then
+                           href_ = 'collapseThree'
+                         elsif game == 4 then
+                           href_ = 'collapseFour'
+                         elsif game == 5 then
+                           href_ = 'collapseFive'
+                         elsif game == 6 then
+                           href_ = 'collapseSix'
+                         else
+                           href_ = 'collapseSeven'
+                         end %>
+                      <b class="replay" data-toggle="collapse" data-parent="#accordion" href="#<%= href_ %>">
+                        Game <%= game.to_s %>
+                      </b>
+                    </h4>
+                  </div>
+                  <div id="<%= href_ %>" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <iframe width="560" height="315"
+                              src="<%= @cast.link { game } %>">
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+        <div align="center" style="margin-top:15px">
+        <% cast_id = @cast.id %>
+        <% cast_total = @cast.upvotes.size - @cast.downvotes.size %>
+        <% if !user_signed_in? %>
 
-  <% elsif current_user.voted_up_on? @cast %>
-      <button type="button" class="btn btn-success btn-xs" id="upvote<%= cast_id %>" onclick="ajax_voting('up',<%= @cast.id %>)">
-        <span class="glyphicon glyphicon-arrow-up"></span>
-      </button>
+            <span class="glyphicon glyphicon-arrow-up"></span>
 
-      <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" style="font-size: 150%; padding-bottom:-2px" id="total<%= cast_id %>"><%=cast_total.abs%></span>
+              <span class="voteCount adjText
+                <% if cast_total >= 0 %> voteGreen
+                <% else %> voteRed
+                <% end %>> <%= cast_total.abs %>" style="padding-bottom:-2px" id="total<%= cast_id %>"> <%= cast_total.abs %> </span>
 
-      <button type="button" class="btn btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= @cast.id %>)">
-        <span class="glyphicon glyphicon-arrow-down"></span>
-      </button>
-  <% elsif current_user.voted_down_on? @cast %>
-      <button type="button" class="btn btn-xs" id="upvote<%= cast_id %>" onclick="ajax_voting('up',<%= @cast.id %>)">
-        <span class="glyphicon glyphicon-arrow-up"></span>
-      </button>
+            <span class="glyphicon glyphicon-arrow-down"></span>
 
-      <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" style="font-size: 150%; padding-bottom:-2px" id="total<%= cast_id %>"><%=cast_total.abs%></span>
+        <% elsif current_user.voted_up_on? @cast %>
+            <button type="button" class="btn btn-success btn-xs" id="upvote<%= cast_id %>" onclick="ajax_voting('up',<%= @cast.id %>)">
+              <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
 
-      <button type="button" class="btn btn-danger btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= @cast.id %>)">
-        <span class="glyphicon glyphicon-arrow-down"></span>
-      </button>
-  <% else %>
-      <button type="button" class="btn btn-xs" id="upvote<%= cast_id %>" onclick="ajax_voting('up',<%= @cast.id %>)">
-        <span class="glyphicon glyphicon-arrow-up"></span>
-      </button>
+              <span class="voteCount adjText
+                <% if cast_total >= 0 %> voteGreen
+                <% else %> voteRed
+                <% end %>> <%= cast_total.abs %>" style="padding-bottom:-2px" id="total<%= cast_id %>"><%= cast_total.abs %></span>
 
-    <span class="voteCount adjText <% if cast_total >= 0 %> voteGreen <% else %> voteRed <% end %>> <%= cast_total.abs %>" style="font-size: 150%; padding-bottom:-2px" id="total<%= cast_id %>"><%=cast_total.abs%>
+            <button type="button" class="btn btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= @cast.id %>)">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+        <% elsif current_user.voted_down_on? @cast %>
+            <button type="button" class="btn btn-xs" id="upvote<%= cast_id %>" onclick="ajax_voting('up',<%= @cast.id %>)">
+              <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+
+              <span class="voteCount adjText
+                <% if cast_total >= 0 %> voteGreen
+                <% else %> voteRed
+                <% end %>> <%= cast_total.abs %>" style="padding-bottom:-2px" id="total<%= cast_id %>"><%= cast_total.abs %></span>
+
+            <button type="button" class="btn btn-danger btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= @cast.id %>)">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+        <% else %>
+            <button type="button" class="btn btn-xs" id="upvote<%= cast_id %>" onclick="ajax_voting('up',<%= @cast.id %>)">
+              <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+
+    <span class="voteCount adjText
+      <% if cast_total >= 0 %> voteGreen
+      <% else %> voteRed
+      <% end %>> <%= cast_total.abs %>" style="padding-bottom:-2px" id="total<%= cast_id %>"><%= cast_total.abs %>
               </span>
 
-      <button type="button" class="btn btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= @cast.id %>)">
-        <span class="glyphicon glyphicon-arrow-down"></span>
-      </button>
-  <% end %>
-
-</div>
-
-<div class="col-md-8 panel-group showCast" id="accordion" style="margin-top:15px">
-  <div class="cast-view">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <b data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          Game 1
-        </b>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse">
-      <div class="panel-body">
-        <iframe width="560" height="315"
-                src="<%= @cast.link %>">
-        </iframe>
+            <button type="button" class="btn btn-xs" id="downvote<%= cast_id %>" onclick="ajax_voting('down',<%= @cast.id %>)">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
-  <% if @cast.best_of.to_i > 1 %>
-  <% (2..@cast.best_of).each do |game| %>
-  <div class="cast-view" style="margin-top:15px">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <% if game == 2 then href_ = 'collapseTwo'
-         elsif game == 3 then href_ = 'collapseThree'
-         elsif game == 4 then href_ = 'collapseFour'
-         elsif game == 5 then href_ = 'collapseFive'
-         elsif game == 6 then href_ = 'collapseSix'
-         else href_ = 'collapseSeven' end %>
-        <b data-toggle="collapse" data-parent="#accordion" href="#<%= href_ %>">
-          Game <%= game.to_s %>
-        </b>
-      </h4>
-    </div>
-    <div id="<%= href_ %>"  class="panel-collapse collapse">
-      <div class="panel-body">
-        <iframe width="560" height="315"
-                src="<%= @cast.link{game} %>">
-        </iframe>
-      </div>
-    </div>
-  </div>
-  <% end %>
-  <% end %>
+  <br/>
 </div>
-<br/>
 </div>
+</div>
+</body>
 
 <script>
-  $(window).ready(function(){
-  var showHeight = $(".showCast").height();
-  var newHeight = showHeight/2+7;
-  $('.showVoteCast').attr('style','margin-top:'+newHeight+'px');
-  })
+    $(window).ready(function () {
+        var showHeight = $(".showCast").height();
+        var newHeight = showHeight / 2 + 7;
+        $('.showVoteCast').attr('style', 'margin-top:' + newHeight + 'px');
+    })
 </script>

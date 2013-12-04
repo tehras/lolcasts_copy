@@ -17,6 +17,12 @@ class CastsController < ApplicationController
   # GET /casts.json
 
   def index
+    @twitch = Twitch.new({
+                             :client_id => @client_id,
+                             :secret_key => @secret_key,
+                             :redirect_uri => @redirect_uri,
+                             :scope => @scope
+                         })
     if params[:search]
       @casts = Cast.search(params[:search])
     else
