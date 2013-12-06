@@ -5,7 +5,7 @@
         <% cast_id = cast.id %>
         <% cast_total = cast.upvotes.size - cast.downvotes.size %>
         <tr style="border-top-color:#3498db;margin-right:5px">
-          <td style="border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
+          <td style="max-width:120px;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
                                                              ' #3498db'
                                                            elsif params[:action] == 'index' then
                                                              ' #34dbce'
@@ -63,39 +63,22 @@
             <% end %>
             <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "color:orange" do %>
                 </td>
-                <td id="matchTypeCSS" style="color:coral;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
+                <td id="matchTypeCSS" style="width=90%;color:coral;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
                                                                                 ' #3498db'
                                                                               elsif params[:action] == 'index' then
                                                                                 ' #34dbce'
                                                                               end %>" class='tableMain'>
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %> <span id="matchTypeCSS">(<%= cast.match_type %>)</span> <% end %>
-                </td>
-                <td style="color:darkorange ;font-weight:bold;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
-                                                                    ' #3498db'
-                                                                  elsif params[:action] == 'index' then
-                                                                    ' #34dbce'
-                                                                  end %>" class='tableMain'>
+
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %><span id="redTeamCSS"><%= cast.red_team %></span> vs <span id="blueTeamCSS"><%= cast.blue_team %></span><% end %>
-                </td>
-                <td class='tableMain' style="border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
-                                                   ' #3498db'
-                                                 elsif params[:action] == 'index' then
-                                                   ' #34dbce'
-                                                 end %>">
+
+
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs" do %><span id="bestOfCSS">[Best of  <%= cast.best_of %>]</span><% end %>
-                </td>
-                <td class='tableMain' style="border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
-                                                   ' #3498db'
-                                                 elsif params[:action] == 'index' then
-                                                   ' #34dbce'
-                                                 end %>">
+
+
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs" do %><span id="tournamentNameCSS"><%= cast.tournament_name %></span><% end %>
-                </td>
-                <td style="color:darkorange;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
-                                                                   ' #3498db'
-                                                                 elsif params[:action] == 'index' then
-                                                                   ' #34dbce'
-                                                                 end %>" class='tableMain'>
+
+
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %><span id="casterCSS"><%= cast.caster %></span><% end %>
                 </td>
                 </tr>
