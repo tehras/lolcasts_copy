@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<% if params['action'] == 'index'%>
+<% if params['action'] == 'index' && params['controller'] == 'home' %>
 <%= render 'home/displayCasts' %>
 <% end %>
 
