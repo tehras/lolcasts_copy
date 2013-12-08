@@ -260,14 +260,16 @@
 .eternity-form.dark .reg-content,
 .eternity-form .dark .reg-content {
   background-color: #464646;
+  opacity: .95;
 }
 .eternity-form.dark .section-title,
 .eternity-form .dark .section-title {
   background-color: #464646;
+  opacity: .95;
 }
 .eternity-form.dark .section-title h3,
 .eternity-form .dark .section-title h3 {
-  color: #34dbce;
+
 }
 .eternity-form.dark .textbox-wrap .input-group,
 .eternity-form .dark .textbox-wrap .input-group {

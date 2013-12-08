@@ -34,7 +34,7 @@
                 <tr style="border-top-color:#3498db">
                 <td style="color:orange;border-top-color:#3498db">
                   <%= link_to stream_path(:stream=>stream), :type=>"button", :class=>"btn btn-xs", style:"color:orange" do %>
-                <%= json[i].values_at('channel')[0].values_at("status")[0].first(35)%>...
+                <%= if json[i].values_at('channel')[0].values_at("status")[0]!=nil then json[i].values_at('channel')[0].values_at("status")[0].first(35) end %>...
                 <% end %>
                 </td>
                 <td style="color:coral;font-weight:bold;border-top-color:#3498db">

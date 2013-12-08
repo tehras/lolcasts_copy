@@ -25,6 +25,7 @@ class CastsController < ApplicationController
                          })
     if params[:search]
       @casts = Cast.search(params[:search])
+      @cast_query = @casts
     else
       @casts = Cast.all
     end
@@ -40,6 +41,7 @@ class CastsController < ApplicationController
                          })
     if params[:tag]
       @casts = Cast.tagged_with(params[:tag])
+      @cast_query = @casts
     else
       @casts = Cast.all
     end

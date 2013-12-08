@@ -1,15 +1,11 @@
-
-  <table class="table table-condensed" style="padding-right:5px">
+<table class="table table-condensed" style="padding-right:5px">
     <tbody>
-    <% cast_query.each do |cast| %>
+    <% if @cast_query != nil %>
+    <% @cast_query.each do |cast| %>
         <% cast_id = cast.id %>
         <% cast_total = cast.upvotes.size - cast.downvotes.size %>
         <tr style="border-top-color:#3498db;margin-right:5px">
-          <td style="max-width:120px;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
-                                                             ' #3498db'
-                                                           elsif params[:action] == 'index' then
-                                                             ' #34dbce'
-                                                           end %>">
+          <td style="max-width:120px;border-top-color:#3498db">
             <% if !user_signed_in? %>
                 <span class="glyphicon glyphicon-arrow-up"></span>
 
@@ -63,11 +59,7 @@
             <% end %>
             <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "color:orange" do %>
                 </td>
-                <td id="matchTypeCSS" style="width=90%;color:coral;border-top-color:<%= if params[:action] == 'top'|| params[:action] == 'tag' then
-                                                                                ' #3498db'
-                                                                              elsif params[:action] == 'index' then
-                                                                                ' #34dbce'
-                                                                              end %>" class='tableMain'>
+                <td id="matchTypeCSS" style="width:80%;color:coral;border-top-color:#3498db">
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %> <span id="matchTypeCSS">(<%= cast.match_type %>)</span> <% end %>
 
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %><span id="redTeamCSS"><%= cast.red_team %></span> vs <span id="blueTeamCSS"><%= cast.blue_team %></span><% end %>
@@ -86,6 +78,9 @@
     <% end %>
     </tbody>
   </table>
+  <% else %>
+  No Records Found Please Try Longer Range
+  <% end %>
 
 
 

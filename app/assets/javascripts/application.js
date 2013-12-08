@@ -281,3 +281,27 @@ $(function () {
 
 
 
+    function isEmpty( el ){
+        return !$.trim(el.html())
+    }
+    ajax_query = function(choice){
+        var msg = {"choice":choice};
+    $.ajax({
+        type: 'POST',
+        url: '/top',
+        dataType: 'html',
+        data: msg,
+        success: function(response) {
+             $('#dummy').html(response);
+            if (choice == 'all')
+             $('#castTag').text("All Casts");
+            else if (choice == 'last7days')
+             $('#castTag').text("Last 7 Days");
+            else if (choice == 'last30days')
+             $('#castTag').text("Last 30 Days");
+        }
+    });
+    }
+
+
+

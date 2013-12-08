@@ -11,13 +11,13 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body>
+<body style="background: url('/assets/league_background.jpg') no-repeat; background-size:100%; background-attachment: fixed">
 
 <%# application layout styled for Twitter Bootstrap 3.0 %>
 <header id="header">
   <%= render 'layouts/navigation' %>
 </header>
-<main id="main" role="main" style="background-color:transparent">
+<main id="main" role="main" style="background-color:transparent" >
         <%= render 'layouts/messages' %>
         <%= yield %>
 </main>

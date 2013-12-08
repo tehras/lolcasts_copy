@@ -6,6 +6,7 @@ Lolcasts::Application.routes.draw do
   post "/match_type" => "casts#match"
 
   get 'top', to: 'home#top'
+  post 'top', to: 'home#query_find'
 
   get 'tags/:tag', to: 'casts#tag', as: :tag
 

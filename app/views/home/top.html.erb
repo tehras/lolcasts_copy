@@ -1,4 +1,4 @@
-<body style="background-color: #3498db">
+
 <br/>
 <br/>
 <br/>
@@ -12,14 +12,19 @@
     <div class="clearfix">
       <div class="col-md-8 registration-left-section  animated fadeInUp">
         <div class="reg-content">
-          <div class="textbox-wrap" style="padding-left:5%;padding-top:5%;padding-right:3%">
-            <% if @casts.empty? %>
-                <h4 class="h3headerTop" style="color:#3498db">LIST IS EMPTY</h4>
-            <% else %>
-                <h4 class="h3headerTop" style="color:#3498db">TOP LIST</h4>
-                <% cast_query = Cast.includes(:votes).order("cached_votes_score").reverse_order %>
-                <%= render 'query', :cast_query => cast_query %>
-            <% end %>
+
+
+          <button style="margin-bottom:5px; background-color:coral" type="button" class="btn" id="all" onclick="ajax_query('all')">All
+          </button>
+          <button style="margin-bottom:5px; background-color:darkorange" type="button" class="btn" id="last7days" onclick="ajax_query('last7days')">Last 7 Days
+          </button>
+          <button style="margin-bottom:5px; background-color:orange" type="button" class="btn" id="last30days" onclick="ajax_query('last30days')">Last 30 Days
+          </button>
+
+
+          <div class="textbox-wrap" style="padding-left:5%;padding-top:0%;padding-right:3%">
+            <h4 class="h3headerTop" id="castTag" style="color:#3498db" value="List Is Empty"></h4>
+            <div id="dummy"></div>
           </div>
         </div>
       </div>
@@ -32,7 +37,15 @@
 <br/>
 <br/>
 
-</body>
+<script>
+
+  $(document).ready(function(){
+
+    ajax_query("all");
+  })
+</script>
+
+
 
 
 
