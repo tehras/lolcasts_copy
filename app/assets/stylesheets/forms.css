@@ -260,11 +260,13 @@
 .eternity-form.dark .reg-content,
 .eternity-form .dark .reg-content {
   background-color: #464646;
+  border: 3px solid coral;
   opacity: .95;
 }
 .eternity-form.dark .section-title,
 .eternity-form .dark .section-title {
   background-color: #464646;
+  border: 3px solid coral;
   opacity: .95;
 }
 .eternity-form.dark .section-title h3,

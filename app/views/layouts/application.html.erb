@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body style="background: url('/assets/league_background.jpg') no-repeat; background-size:100%; background-attachment: fixed">
+<body style="background: url('/assets/league_background.jpg'); background-size:100%; background-attachment: fixed">
 
 <%# application layout styled for Twitter Bootstrap 3.0 %>
 <header id="header">
@@ -21,6 +21,9 @@
         <%= render 'layouts/messages' %>
         <%= yield %>
 </main>
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>
 </body>
 <div class="fixed-side-social-container">
   <a class="social-icon linkedin-icon" href="http://www.linkedin.com/YourProfile" target="new" title="Follow us on LinkedIn">

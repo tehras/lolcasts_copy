@@ -3758,7 +3758,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
-  color: black;
+  color: coral;
 }
 a.active.navbar-brand {
     background-color: #000000;
@@ -3774,7 +3774,7 @@ a.active.navbar-brand {
   color: #999999;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: black;
+  color: coral;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
