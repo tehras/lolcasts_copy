@@ -16,7 +16,7 @@
                 <div class="form-field-login" >
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <%= f.input :name, label:false, :placholder=>"E-Mail", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                    <%= f.input :email, label:false, :placholder=>"E-Mail", autofocus:true,:html=>{class:"form-control"}, :required => true %>
                   </div>
                 </div>
                 <div class="form-field-login">
@@ -24,9 +24,6 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <%= f.input :password, label:false, :placholder=>"Password", :html=>{class:"form-control"}, :required => true %>
                   </div>
-                  <!--<div class="input-group">-->
-                    <!--<%= link_to "Forgot your password?", new_password_path(resource_name) %>-->
-                  <!--</div>-->
                 </div>
               </div>
             </div>
