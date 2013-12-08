@@ -1,8 +1,48 @@
-<h2>Sign in</h2>
+<br/>
+<br/>
+<br/>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.input :email, :autofocus => true %>
-  <%= f.input :password %>
-  <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+    <div class="container eternity-form dark">
+      <div class="registration-form-section" style="max-width:30%">
+        <form>
+          <div class="section-title reg-header animated fadeInDown">
+            <h3>Sign-In</h3>
+            <%= f.error_notification %>
+            <%= display_base_errors resource %>
+          </div>
+          <div class="clearfix">
+            <div class="col-sm-12 registration-left-section  animated fadeInUp" >
+              <div class="reg-content">
+                <div class="form-field-login" >
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <%= f.input :name, label:false, :placholder=>"E-Mail", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                  </div>
+                </div>
+                <div class="form-field-login">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <%= f.input :password, label:false, :placholder=>"Password", :html=>{class:"form-control"}, :required => true %>
+                  </div>
+                  <div class="input-group">
+                    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+          <div class="registration-form-action clearfix animated fadeInUp" style="border:3px solid coral">
+            <a href="/users/sign_up" class="btn btn-success pull-left blue-btn " style="background-color:#3498db">
+              <i class="glyphicon glyphicon-chevron-left"></i>&nbsp; &nbsp;Go To Sign-Up
+            </a>
+            <%= f.button :submit, 'Sign-In', :class => 'btn btn-success pull-right green-btn', style:"background-color:#2ecc71" %>
+          </div>
+        </form>
 <% end %>
-<%= render "devise/shared/links" %>
+</div>
+
+</div>
+
+<br/>
+<br/>
+<br/>

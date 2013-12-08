@@ -262,11 +262,13 @@
   background-color: #464646;
   border: 3px solid coral;
   opacity: .95;
+  border-radius: 5px;
 }
 .eternity-form.dark .section-title,
 .eternity-form .dark .section-title {
   background-color: #464646;
   border: 3px solid coral;
+  border-radius: 5px;
   opacity: .95;
 }
 .eternity-form.dark .section-title h3,
@@ -488,5 +490,13 @@ b.replay:hover{
     text-decoration: none;
     cursor: pointer;
 }
+
+.string.required {
+       height:34px;
+}
+.password {
+    height:34px;
+}
+
 
 

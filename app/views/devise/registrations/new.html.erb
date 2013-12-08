@@ -1,43 +1,32 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true, class:"form-control:", :placeholder=>"Name" %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-
-
-
 <%= render "devise/shared/links" %>
 
-
-<body style="background-color: grey">
 <br />
 <br />
 <br />
-<div class="container eternity-form">
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+<div class="container eternity-form dark">
   <div class="registration-form-section">
     <form>
       <div class="section-title reg-header animated fadeInDown">
         <h3>Create Your Account </h3>
-
+        <%= f.error_notification %>
+        <%= display_base_errors resource %>
       </div>
       <div class="clearfix">
         <div class="col-sm-6 registration-left-section  animated fadeInUp">
           <div class="reg-content">
+            <%= display_base_errors resource %>
             <div class="form-field-login" >
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <%= f.text_field :name, :autofocus => true, class:"form-control", :placeholder=>"Name" %>
+                <%= f.input :name, label:false, :placholder=>"UserName", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+
               </div>
             </div>
             <div class="form-field-login">
               <div class="input-group">
                 <span class="input-group-addon "><i class="glyphicon glyphicon-envelope"></i></span>
-
-                <%= f.input :email, label:false, :placholder=>"E-Mail", :html=>{class:"form-control"}, :required => true %>
+                <%= f.input :email, label:false, :placholder=>"E-Mail",style:'height:34px', :html=>{class:"form-control"}, :required => true %>
               </div>
             </div>
           </div>
@@ -47,27 +36,26 @@
             <div class="form-field-login">
               <div class="input-group">
                 <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
-                <%= f.text_field :password, placeholder:"Password", class:"form-control", :required => true %>
+                <%= f.input :password, label:false, :placholder=>"Password", autofocus:true,:html=>{class:"form-control"}, :required => true %>
               </div>
             </div>
             <div class="form-field-login">
               <div class="input-group">
                 <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
-                <%= f.text_field :password_confirmation, placeholder:"Confirm-Password", class:"form-control", :required => true %>
+                <%= f.input :password_confirmation, label:false, :placholder=>"Confirm-Password", autofocus:true,:html=>{class:"form-control"}, :required => true %>
               </div>
             </div>
           </div>
         </div>
       </div>
-<% end %>
-      <div class="registration-form-action clearfix animated fadeInUp">
-        <a href="#" class="btn btn-success pull-left blue-btn ">
+      <div class="registration-form-action clearfix animated fadeInUp" style="border:3px solid coral">
+        <a href="/users/sign_in" class="btn btn-success pull-left blue-btn " style="background-color:#3498db">
           <i class="glyphicon glyphicon-chevron-left"></i>&nbsp; &nbsp;Back To Login
         </a>
-        <button type="submit" class="btn btn-success pull-right green-btn ">Register Now &nbsp; </button>
-        <%= link_to "Register Now", new_registration_path(resource_name), class:"btn btn-success pull-right green-btn" %> <!--<i class="glyphicon glyphicon-chevron-right"></i>-->
+        <%= f.button :submit, 'Sign-Up', :class => 'btn btn-success pull-right green-btn', style:"background-color:#2ecc71" %>
       </div>
     </form>
+<% end %>
   </div>
 
 </div>

@@ -12,7 +12,7 @@
   <div class="col-md-8 registration-left-section  animated fadeInUp">
     <div class="reg-content">
       <div class="textbox-wrap showCast">
-        <div align="center" style="padding-top:15px;padding-bottom:15px; border-bottom: 1px solid #34dbce;color:orange">
+        <div align="center" style="padding-top:15px;padding-bottom:15px; border-bottom: 1px solid #3498db;color:orange">
             <h4>
             (<span class="adjText leftMain" id="matchTypeCSS" ><%= @cast.match_type %></span>)
             <span class="adjText leftMain" id="redTeamCSS" ><%= @cast.red_team %></span> vs
@@ -24,7 +24,7 @@
         </div>
 
         <div class="cast-view">
-          <div class="panel-heading" style="border-bottom: 1px solid #34dbce; color:orange">
+          <div class="panel-heading" style="border-bottom: 1px solid #3498db; color:orange">
             <h4 class="panel-title">
               <b class="replay" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                 Game 1
@@ -42,7 +42,7 @@
         <% if @cast.best_of.to_i > 1 %>
             <% (2..@cast.best_of).each do |game| %>
                 <div class="cast-view" style="margin-top:15px">
-                  <div class="panel-heading" style="border-bottom: 1px solid #34dbce; color:orange">
+                  <div class="panel-heading" style="border-bottom: 1px solid #3498db; color:orange">
                     <h4 class="panel-title">
                       <% if game == 2 then
                            href_ = 'collapseTwo'

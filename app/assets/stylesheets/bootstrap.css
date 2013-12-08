@@ -210,7 +210,7 @@ textarea {
   background-image: none;
 }
 a {
-  color: #34dbce;
+  color: #3498db;
   text-decoration: none;
 }
 a:hover,
@@ -3056,7 +3056,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-weight: normal;
   line-height: 1;
   text-align: center;
-  background-color: #eeeeee;
+  background-color: coral;
   border: 1px solid #cccccc;
   border-radius: 0;
 }
