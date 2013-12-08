@@ -5,7 +5,7 @@
         <% cast_id = cast.id %>
         <% cast_total = cast.upvotes.size - cast.downvotes.size %>
         <tr style="border-top-color:#3498db;margin-right:5px">
-          <td style="max-width:120px;border-top-color:#3498db">
+          <td style="max-width:120px;border-top-color:coral">
             <% if !user_signed_in? %>
                 <span class="glyphicon glyphicon-arrow-up"></span>
 
@@ -59,7 +59,7 @@
             <% end %>
             <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "color:orange" do %>
                 </td>
-                <td id="matchTypeCSS" style="width:80%;color:coral;border-top-color:#3498db">
+                <td id="matchTypeCSS" style="width:80%;color:coral;border-top-color:coral">
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %> <span id="matchTypeCSS">(<%= cast.match_type %>)</span> <% end %>
 
                   <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", :style=>"color:orange" do %><span id="redTeamCSS"><%= cast.red_team %></span> vs <span id="blueTeamCSS"><%= cast.blue_team %></span><% end %>

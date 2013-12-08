@@ -1,16 +1,44 @@
 <br/>
 <br/>
 <br/>
-<br/>
+<div class="container eternity-form dark">
+  <div class="row">
+    <div class="col-md-2 registration-left-section  animated fadeInUp">
+    </div>
+    <div class="col-md-8 registration-left-section  animated fadeInUp">
+      <div class="reg-content">
+        <div class="textbox-wrap showCast">
+          <button style="margin-bottom:5px; background-color:orange" type="button" class="btn" id="Chat-Box">CHATBOX
+          </button>
+          <div style="width:620px;margin: 0 auto">
+            <object type="application/x-shockwave-flash" height="378" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=flosd" bgcolor="#000000">
+              <param name="allowFullScreen" value="true"/>
+              <param name="allowScriptAccess" value="always"/>
+              <param name="allowNetworking" value="all"/>
+              <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"/>
+              <param name="flashvars" value="hostname=www.twitch.tv&channel=<%= @stream %>&auto_play=true&start_volume=25"/>
+            </object>
 
-<div style="width:620px;margin: 0 auto" >
-<object type="application/x-shockwave-flash" height="378" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=flosd" bgcolor="#000000">
-  <param name="allowFullScreen" value="true"/>
-  <param name="allowScriptAccess" value="always"/>
-  <param name="allowNetworking" value="all"/>
-  <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"/>
-  <param name="flashvars" value="hostname=www.twitch.tv&channel=<%= @stream %>&auto_play=true&start_volume=25"/>
-</object>
+            <div id="chat-box" class="hidden">
+              <iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=<%= @stream %>&amp;popout_chat=true" height="300" width="100%"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=<%= @stream %>&amp;popout_chat=true" height="300" width="100%"></iframe>
+    <div class="col-md-2 registration-left-section  animated fadeInUp" >
+    </div>
+  </div>
 </div>
+
+<script>
+    $('#Chat-Box').on('click', function () {
+        if ($('#chat-box').hasClass('hidden')) {
+            $('#chat-box').removeClass('hidden')
+        }
+        else {
+            $('#chat-box').addClass('hidden')
+        }
+    })
+</script>
