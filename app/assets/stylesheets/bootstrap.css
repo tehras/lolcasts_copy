@@ -215,6 +215,8 @@ a {
 }
 a:hover,
 a:focus {
+    text-decoration: none;
+    opacity:.9;
 }
 a:focus {
 }

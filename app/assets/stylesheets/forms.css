@@ -486,7 +486,7 @@
 }
 
 b.replay:hover{
-    color: #34dbce;
+    opacity:.9;
     text-decoration: none;
     cursor: pointer;
 }
