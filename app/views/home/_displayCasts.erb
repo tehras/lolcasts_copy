@@ -1,5 +1,5 @@
-<div class="col-sm-4 registration-right-section animated fadeInUp" style="<%= 'display:none' if params[:action]=='all_streams'%>">
-  <div class="reg-content" align="center">
+
+  <div class="reg-content" align="center" style="<%= 'display:none' if params[:action]=='all_streams'%>">
     <div class="textbox-wrap">
       <h4 style="text-align: center; margin-top:0px;color:#3498db" >TOP STREAMS</h4>
 
@@ -17,4 +17,3 @@
       <%= link_to "View All", all_streams_path, :type=>"button", :class=>"btn btn-xs", :Style=>"color:orange" %>
     </div>
   </div>
-</div>
