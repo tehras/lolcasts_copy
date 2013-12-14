@@ -499,5 +499,12 @@ b.replay:hover{
     height:34px;
 }
 
+html {
+    background: url(/assets/5tlBTr.svg) no-repeat center center fixed #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 
