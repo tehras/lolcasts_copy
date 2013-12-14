@@ -1,10 +1,18 @@
 <%# Rails flash messages styled for Twitter Bootstrap 3.0 %>
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-    <div id="alert" class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+    <div id="alert" class="alert alert-<%= name == :notice ? "success" : "danger" %>" style="margin-top: 50px">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     </div>
   <% end %>
 <% end %>
+
+<script>
+    setTimeout(fade_out, 5000);
+
+    function fade_out() {
+        $("#alert").fadeOut('slow').empty();
+    }
+</script>
 

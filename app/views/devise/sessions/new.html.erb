@@ -3,7 +3,7 @@
 <br/>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
     <div class="container eternity-form dark">
-      <div class="registration-form-section" style="max-width:30%">
+      <div class="registration-form-section" style="max-width:350px">
         <form>
           <div class="section-title reg-header animated fadeInDown">
             <h3>Sign-In</h3>
@@ -16,13 +16,13 @@
                 <div class="form-field-login" >
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <%= f.input :email, label:false, :placholder=>"E-Mail", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                    <%= f.input :email, placeholder: 'E-Mail', label:false, :placholder=>"E-Mail", autofocus:true,:html=>{class:"form-control"}, :required => true %>
                   </div>
                 </div>
                 <div class="form-field-login">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <%= f.input :password, label:false, :placholder=>"Password", :html=>{class:"form-control"}, :required => true %>
+                    <%= f.input :password, placeholder: 'Password', label:false, :placholder=>"Password", :html=>{class:"form-control"}, :required => true %>
                   </div>
                 </div>
               </div>

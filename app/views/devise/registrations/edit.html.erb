@@ -1,14 +1,97 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+<br />
+<br />
+<br />
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-  <%= f.input :password_confirmation, :required => false %>
-  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
+    <div class="container eternity-form dark">
+      <div class="registration-form-section">
+        <form>
+          <div class="section-title reg-header animated fadeInDown">
+            <h3>Edit Your Account </h3>
+            <%= f.error_notification %>
+            <%= display_base_errors resource %>
+          </div>
+          <div class="clearfix">
+            <div class="col-sm-6 registration-left-section  animated fadeInUp">
+              <div class="reg-content">
+                <div class="form-field-login" >
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <%= f.input :name, placeholder: 'UserName', label:false, autofocus:true,:html=>{class:"form-control"}, :required => true %>
+
+                  </div>
+                </div>
+                <div class="form-field-login">
+                  <div class="input-group">
+                    <span class="input-group-addon "><i class="glyphicon glyphicon-envelope"></i></span>
+                    <%= f.input :email, placeholder: 'E-Mail', label:false, style:'height:34px', :html=>{class:"form-control"}, :required => true %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 registration-right-section animated fadeInUp">
+              <div class="reg-content">
+                <div class="form-field-login">
+                  <div class="input-group">
+                    <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
+                    <%= f.input :current_password, placeholder: 'Current Password', label:false, autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                  </div>
+                </div>
+                <div class="form-field-login">
+                  <div class="input-group">
+                    <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
+                    <%= f.input :password, placeholder: 'New Password', label:false, autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                  </div>
+                </div>
+                <div class="form-field-login">
+                  <div class="input-group">
+                    <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
+                    <%= f.input :password_confirmation, placeholder: 'Confirm New Password', label:false, :placholder=>"Confirm-Password", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="registration-form-action clearfix animated fadeInUp" style="border:3px solid coral">
+            <a href="/users/sign_in" class="btn btn-success pull-left blue-btn " style="background-color:#3498db">
+              <i class="glyphicon glyphicon-chevron-left"></i>&nbsp; &nbsp;Back To Login
+            </a>
+            <%= f.button :submit, 'Update', :class => 'btn btn-success pull-right green-btn', style:"background-color:#2ecc71" %>
+          </div>
+        </form>
 <% end %>
-<h3>Cancel my account</h3>
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-<%= link_to "Back", :back %>
+</div>
+
+</div>
+<br />
+<br />
+<br />
+
+<script type="text/javascript">
+    $(function () {
+
+        //Custom Checkbox For Light Theme
+        $("input").iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            increaseArea: '20%'
+        });
+
+
+        //Custom Checkbox For Dark Theme
+        $(".dark input").iCheck({
+            checkboxClass: 'icheckbox_polaris',
+            increaseArea: '20%'
+        });
+
+
+        //TextBox Focus Event
+        $(".form-control").focus(function () {
+            $(this).closest(".textbox-wrap").addClass("focused");
+        }).blur(function () {
+                    $(this).closest(".textbox-wrap").removeClass("focused");
+                });
+
+    });
+</script>
+

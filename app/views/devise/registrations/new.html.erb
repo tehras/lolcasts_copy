@@ -18,14 +18,14 @@
             <div class="form-field-login" >
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <%= f.input :name, label:false, :placholder=>"UserName", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                <%= f.input :name,  :placholder=>"UserName", label:false, autofocus:true,:html=>{class:"form-control"}, :required => true %>
 
               </div>
             </div>
             <div class="form-field-login">
               <div class="input-group">
                 <span class="input-group-addon "><i class="glyphicon glyphicon-envelope"></i></span>
-                <%= f.input :email, label:false, :placholder=>"E-Mail",style:'height:34px', :html=>{class:"form-control"}, :required => true %>
+                <%= f.input :email, :placholder=>"E-Mail", label:false, style:'height:34px', :html=>{class:"form-control"}, :required => true %>
               </div>
             </div>
           </div>
@@ -35,13 +35,13 @@
             <div class="form-field-login">
               <div class="input-group">
                 <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
-                <%= f.input :password, label:false, :placholder=>"Password", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                <%= f.input :password, :placholder=>"Password", label:false, autofocus:true,:html=>{class:"form-control"}, :required => true %>
               </div>
             </div>
             <div class="form-field-login">
               <div class="input-group">
                 <span class="input-group-addon "><i class="glyphicon glyphicon-lock"></i></span>
-                <%= f.input :password_confirmation, label:false, :placholder=>"Confirm-Password", autofocus:true,:html=>{class:"form-control"}, :required => true %>
+                <%= f.input :password_confirmation, placeholder: 'Confirm Password', label:false, :placholder=>"Confirm-Password", autofocus:true,:html=>{class:"form-control"}, :required => true %>
               </div>
             </div>
           </div>

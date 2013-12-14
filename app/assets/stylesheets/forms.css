@@ -5,12 +5,12 @@
      clear: both;
      font-weight: normal;
      line-height: 1.428571429;
-     color: #3498db;
+     color: coral;
      white-space: nowrap;
 
  }
 .dropdown-menu > li > a:hover {
-    color: coral;
+
 }
 .eternity-form-modal {
   background-color: #707d85;
