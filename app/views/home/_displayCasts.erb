@@ -2,18 +2,17 @@
   <div class="reg-content" align="center" style="<%= 'display:none' if params[:action]=='all_streams'%>">
     <div class="textbox-wrap">
       <h4 style="text-align: center; margin-top:0px;color:#3498db" >TOP STREAMS</h4>
-
       <% json = JSON.parse(@twitch.getStreams(game:"League of Legends").to_json)['body']['streams'] %>
       <%  length = json.length - 1 %>
       <% if length > 15 then length = 15 end %>
       <% json %>
       <% if length != nil then(0..length).each do |i| %>
               <% stream = json[i].values_at('channel')[0].values_at("name")[0] %>
-              <span id="spanWidth" style="color:orange; width:80%"><%= link_to stream_path(:stream=>stream), :type=>"button", :class=>"btn btn-xs", :Style=>"color:orange" do %><span><%= if json[i].values_at('channel')[0].values_at("status")[0]!= nil then json[i].values_at('channel')[0].values_at("status")[0].first(20) end %>... ( <%= json[i].values_at('channel')[0].values_at("display_name")[0] %> ) </span><span style="color:darkorange">      -    <%= json[i].values_at('viewers')[0] %> <% end %></span></span></br>
+              <span id="spanWidth" style="color:orange; width:80%"><%= link_to stream_path(:stream=>stream), :type=>"button", :class=>"btn btn-xs", :Style=>"color:orange" do %><span class="castStatusSpan"><%= if json[i].values_at('channel')[0].values_at("status")[0]!= nil then json[i].values_at('channel')[0].values_at("status")[0].first(20) end %>...</span><span> ( <%= json[i].values_at('channel')[0].values_at("display_name")[0] %> )</span><span style="color:darkorange">      -    <%= json[i].values_at('viewers')[0] %> <% end %></span></span></br>
           <% end %>
       <% end %>
-
 
       <%= link_to "View All", all_streams_path, :type=>"button", :class=>"btn btn-xs", :Style=>"color:orange" %>
     </div>
   </div>
+
