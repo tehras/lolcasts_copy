@@ -33,9 +33,13 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body" align='center'>
-              <iframe width="560" height="315"
-                      src="<%= @cast.link %>">
+              <% if @cast.link.downcase != 'na' %>
+              <iframe class="castReplay"
+                      src="//www.youtube.com/embed/<%= @cast.link %>">
               </iframe>
+              <% else %>
+              <div style='color: orange'>GAME NOT AVAILABLE</div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -63,10 +67,28 @@
                     </h4>
                   </div>
                   <div id="<%= href_ %>" class="panel-collapse collapse">
+                    <% if game == 2 then
+                       @castNow = @cast.link2
+                       elsif game == 3 then
+                       @castNow = @cast.link3
+                       elsif game == 4 then
+                       @castNow = @cast.link4
+                       elsif game == 5 then
+                       @castNow = @cast.link5
+                       elsif game == 6 then
+                       @castNow = @cast.link6
+                       elsif game == 7 then
+                       @castNow = @cast.link7
+                       end
+                    %>
                     <div class="panel-body" align="center">
-                      <iframe width="560" height="315"
-                              src="<%= @cast.link { game } %>">
+                      <% if @castNow.downcase != '' %>
+                      <iframe class="castReplay"
+                              src="//www.youtube.com/embed/<%= @castNow %>">
                       </iframe>
+                      <% else %>
+                      <div style='color: orange'>GAME NOT AVAILABLE</div>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -137,6 +159,12 @@
 </div>
 
 <script>
+    $(document).ready(function(){
+        var height = $(window).height();
+        $('.castReplay').attr('height',(parseInt(height)*.8).toString()+"px");
+        $('.castReplay').attr('width','100%');
+    })
+
     $(window).ready(function () {
         var showHeight = $(".showCast").height();
         var newHeight = showHeight / 2 + 7;

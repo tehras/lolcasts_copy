@@ -328,16 +328,22 @@ var link7_flag;
 function youtube_checker(link){
     $('#'+link+'_field').keyup(function()
     {
+        var linkTemp = 'dummy';
+        if (link != 'link1')
+        {
+            linkTemp = $('#'+link+'_field').val().toLowerCase();
+        }
         var return_value = youtube_parser($('#'+link+'_field').val());
-        if (return_value == null){
+        if (return_value == null &&  linkTemp != 'na'){
             $('#'+link+'_error').removeAttr('Style');
             $('#'+link+'_error').attr('Style','color:red');
-            $('#'+link+'_error').text('*Not Correct! Ex(http://www.youtube.com/watch?v=XXXXXXXXXXX)')
+            $('#'+link+'_error').text('*Not Correct! Ex(http://www.youtube.com/watch?v=XXXXXXXXXXX) - Type "NA" if game not available (Not for Game 1)')
             $('#submit').attr('Style','display:none');
         }
         else {
-            $('#'+link+'_error').attr('Style','color:green')
-            $('#'+link+'_error').text('Success! YouTube Video with a link of '+return_value+' will be displayed!')
+            $('#'+link+'Hidden').val(return_value);
+            $('#'+link+'_error').attr('Style','color:green');
+            $('#'+link+'_error').text('Success! YouTube Video with a link of '+return_value+' will be displayed!');
             var best_of = $("#best_of_hidden").val();
             if (eval(link.concat("_flag"))== link1_flag)
             {

@@ -2,7 +2,7 @@
 <%= simple_form_for @cast do |f| %>
     <%= f.error_notification :message => "There is a problem with one or more fields" %>
     <form class="form-horizontal" role="form">
-      <div class="form-inputs" style="margin: 10% 10% 10% 10%">
+      <div class="form-inputs" style="margin: 5% 10% 5% 10%">
         <div class="form-group">
           <button style="margin-bottom:5px" type="button" class="btn" id="3v3" onclick="ajax_match('3v3')">3 v 3
           </button>
@@ -70,12 +70,18 @@
         <div class="form-group" id="link7" style="display:none">
           <%= f.text_field :link7, placeholder: "Game 7 Embedded Link", id: "link7_field", class: 'form-control', required: "required", style:"color:black" %>
           <span id="link7_error" style="display:none">*Not Correct! Ex(http://www.youtube.com/watch?v=XXXXXXXXXXX)</span>
-
         </div>
 
         <div class="form-actions" id="submit" style="display:none">
           <%= f.button :submit, class: 'btn btn-info' %>
         </div>
+        <%= f.hidden_field :link, id: 'link1Hidden' %>
+        <%= f.hidden_field :link2, id: 'link2Hidden' %>
+        <%= f.hidden_field :link3, id: 'link3Hidden' %>
+        <%= f.hidden_field :link4, id: 'link4Hidden' %>
+        <%= f.hidden_field :link5, id: 'link5Hidden' %>
+        <%= f.hidden_field :link6, id: 'link6Hidden' %>
+        <%= f.hidden_field :link7, id: 'link7Hidden' %>
         <%= f.hidden_field :best_of, :id => 'best_of_hidden' %>
 
       </div>

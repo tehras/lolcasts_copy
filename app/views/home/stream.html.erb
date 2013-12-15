@@ -11,12 +11,12 @@
           <button style="margin-bottom:5px; background-color:orange" type="button" class="btn" id="Chat-Box">CHATBOX
           </button>
           <div style="margin: 0 auto">
-            <object type="application/x-shockwave-flash" height="400px" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<%= @stream %>" bgcolor="#000000">
+            <object type="application/x-shockwave-flash" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<%= @stream %>" bgcolor="#000000">
               <param name="allowFullScreen" value="true"/>
               <param name="allowScriptAccess" value="always"/>
               <param name="allowNetworking" value="all"/>
               <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"/>
-              <param name="flashvars" value="hostname=www.twitch.tv&channel=<%= @stream %>&auto_play=true&start_volume=25"/>
+              <param name="flashvars" value="hostname=www.twitch.tv&channel=<%= @stream %>&auto_play=true&start_volume=50"/>
             </object>
 
             <div id="chat-box" class="hidden">
@@ -34,9 +34,9 @@
 
 <script>
     $(document).ready(function(){
-        var height = $('.container').height();
-        $('#live_embed_player_flash').attr('style','height:'+(parseInt(height)*.8).toString()+"px");
-
+        var height = $(window).height();
+        $('#live_embed_player_flash').attr('height',(parseInt(height)*.8).toString()+"px");
+        $('#live_embed_player_flash').attr('width','100%');
     })
 
     $('#Chat-Box').on('click', function () {
