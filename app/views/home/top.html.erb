@@ -48,7 +48,7 @@
             </div></div>
             <br/>
             <div align='center'>
-            <button type="button" class="btn" id="loadMoreBtn" onclick="loadMore_ajax()">Load More
+            <button type="button" class="btn" id="loadMoreBtn" style="display:none" onclick="loadMore_ajax()">Load More
             </button>
             </div>
           </div>
@@ -66,9 +66,9 @@
   $(document).ready(function(){
 
     ajax_query("all");
-      if ($('.countTotal').last().val() < 15)
+      if ($('.countTotal').last().val() >= 15)
       {
-          $('#loadMoreBtn').attr('style','display:none');
+          $('#loadMoreBtn').attr('style','display:block');
       }
   })
 
