@@ -1,9 +1,11 @@
-<table class="table table-condensed" style="padding-right:5px">
+<table class="table table-condensed" style="padding-right:5px; margin-bottom:0px">
     <tbody>
+    <% count = 0 %>
     <% if @cast_query != nil %>
     <% @cast_query.each do |cast| %>
         <% cast_id = cast.id %>
         <% cast_total = cast.upvotes.size - cast.downvotes.size %>
+        <% count = count + 1 %>
         <tr style="border-top-color:#3498db;margin-right:5px">
           <td style="max-width:120px;border-top-color:coral">
             <% if !user_signed_in? %>
@@ -76,6 +78,7 @@
   <% else %>
   No Records Found Please Try Longer Range
   <% end %>
+  <input class="countTotal" type="hidden" value="<%= count %>" />
 
 
 

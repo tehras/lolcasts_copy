@@ -46,6 +46,11 @@
                 </div>
               </div>
             </div></div>
+            <br/>
+            <div align='center'>
+            <button type="button" class="btn" id="loadMoreBtn" onclick="loadMore_ajax()">Load More
+            </button>
+            </div>
           </div>
         </div>
       </div>
@@ -54,13 +59,41 @@
   </div>
 
 </div>
+<input id="dataType" type="hidden" value="all" />
 
 <script>
 
   $(document).ready(function(){
 
     ajax_query("all");
+      if ($('.countTotal').last().val() < 10)
+      {
+          $('#loadMoreBtn').attr('style','display:none');
+      }
   })
+
+  function loadMore_ajax() {
+      if($(window).scrollTop() == $(document).height() - $(window).height()) {
+          lastCount = $('.countTotal').last().val();
+          dataType = $('#dataType').last().val();
+          var msg = {"lastCount":lastCount,"dataType":dataType};
+          $.ajax({
+              type: 'POST',
+              url: '/top',
+              dataType: 'html',
+              data: msg,
+              success: function(response) {
+                  $('#dummy').append(response);
+                  if ($('.countTotal').last().val() < 15)
+                  {
+                      $('#loadMoreBtn').attr('style','display:none');
+                  }
+                  $('.countTotal').val(parseInt($('.countTotal').last().val())+parseInt(lastCount));
+              }
+          });
+      }
+  }
+
 </script>
 
 

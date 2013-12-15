@@ -860,3 +860,7 @@ html {
     }
 }
 
+#loadMoreBtn{
+    margin-bottom:5px; background-color:coral
+}
+

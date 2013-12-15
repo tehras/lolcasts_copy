@@ -36,6 +36,11 @@
                 </div>
               </div>
             </div></div>
+            <br/>
+            <div align='center'>
+              <a href='/top'><button href='/top' type="button" class="btn" style="background-color:coral;display:block" >View All Casts
+              </button></a>
+            </div>
           </div>
 
         </div>
@@ -78,7 +83,12 @@
         $('#load').show();
         ajax_query("last30days");
 
-    })
+        $(document).ajaxComplete(function() {
+        $('#castTag').text('TOP CASTS - LAST 30 DAYS');
+        })
+    });
+
+
 </script>
 
 
