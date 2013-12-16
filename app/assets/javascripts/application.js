@@ -309,16 +309,24 @@ function formFiller() {
                 linkTemp = $('#' + link + '_field').val().toLowerCase();
             }
             var return_value = youtube_parser($('#' + link + '_field').val());
-            if (return_value == null && linkTemp != 'na') {
+            var return_value2 = twitch_parser($('#' + link + '_field').val());
+            if (return_value == null && return_value2 == null && linkTemp != 'na') {
                 $('#' + link + '_error').removeAttr('Style');
                 $('#' + link + '_error').attr('Style', 'color:red');
-                $('#' + link + '_error').text('*Not Correct! Ex(http://www.youtube.com/watch?v=XXXXXXXXXXX) - Type "NA" if game not available (Not for Game 1)')
+                $('#' + link + '_error').text('*Not Correct! Ex(http://www.youtube.com/watch?v=XXXXXXXXXXX or http://www.twitch.tv/ZZZZZZZ/Y/XXXXXXX) - Type "NA" if game not available (Not for Game 1)')
                 $('#submit').attr('Style', 'display:none');
             }
             else {
-                $('#' + link + 'Hidden').val(return_value);
-                $('#' + link + '_error').attr('Style', 'color:green');
-                $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + ' will be displayed!');
+                if (return_value2 != null) {
+                    $('#' + link + 'Hidden').val(return_value2);
+                    $('#' + link + '_error').attr('Style', 'color:green');
+                    $('#' + link + '_error').text('Success! Twitch with a link of ' + return_value2 + ' will be displayed!');
+                }
+                else {
+                    $('#' + link + 'Hidden').val(return_value);
+                    $('#' + link + '_error').attr('Style', 'color:green');
+                    $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + ' will be displayed!');
+                }
                 var best_of = $("#best_of_hidden").val();
                 if (eval(link.concat("_flag")) == link1_flag) {
                     link1_flag = true;
@@ -377,6 +385,20 @@ function formFiller() {
         var match = url.match(regExp);
         if (match && match[7].length == 11) {
             return match[7];
+        } else {
+            return null;
+        }
+    }
+
+    function twitch_parser(url) {
+        var regExp = /http:\/\/(.*twitch\.tv\/.*|.*twitch\.tv\/.*\/b\/.*)/i;
+        var match = url.match(regExp);
+        var match1 = match[1].split('/');
+        var match2 = match1[3].split('?t=');
+        alert(match[1]);
+        if (match2[0].length == 7)
+        {
+            return match[1];
         } else {
             return null;
         }
