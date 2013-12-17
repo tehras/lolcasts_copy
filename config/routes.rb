@@ -1,4 +1,6 @@
 Lolcasts::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :casts
 
   post "/vote" => "casts#vote"

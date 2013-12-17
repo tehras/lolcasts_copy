@@ -18,7 +18,7 @@ gem 'rails_12factor'
 gem 'acts-as-taggable-on'
 gem 'simple_form'
 gem 'twitch', '= 0.0.2'
-
+gem 'activeadmin', github: 'gregbell/active_admin'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
