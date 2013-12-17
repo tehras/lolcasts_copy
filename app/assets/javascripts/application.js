@@ -391,14 +391,16 @@ function formFiller() {
     }
 
     function twitch_parser(url) {
-        var regExp = /http:\/\/(.*twitch\.tv\/.*|.*twitch\.tv\/.*\/b\/.*)/i;
+        var regExp = /^(https?:\/\/)?(.*twitch\.tv\/.*|.*twitch\.tv\/.*\/b\/.*)/i;
         var match = url.match(regExp);
-        var match1 = match[1].split('/');
-        var match2 = match1[3].split('?t=');
-        alert(match[1]);
-        if (match2[0].length == 7)
-        {
-            return match[1];
+        if (match != null) {
+            var match1 = match[2].split('/');
+            if (match1 != null) {
+                var match2 = match1[3].split('?t=');
+                if (match2[0].length == 7) {
+                    return match[2];
+                }
+            }
         } else {
             return null;
         }

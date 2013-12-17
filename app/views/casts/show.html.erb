@@ -36,6 +36,7 @@
                 <% if @cast.link.downcase != 'na' %>
                     <% cast = @cast.link.downcase %>
                     <% splitCast = cast.split('/') %>
+                    <% if splitCast[3]!= nil %>
                     <% splitTime = splitCast[3].split('?t=') %>
                     <% if splitTime[0].size == 7 %>
                           <object type="application/x-shockwave-flash" class="castReplay" name="archive_site_player_1387161686_1_235818_container" data="http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" id="archive_site_player_flash" style="visibility: visible;">
@@ -45,6 +46,9 @@
                             <param name="wmode" value="transparent">
                             <param name="flashvars" value="videoId=<%=splitCast[2]%><%=splitTime[0]%>&amp;chapter_id=<%= splitTime[0] %>&amp;channel=<%= splitCast[1] %>&amp;initCallback=Twitch.player._initCallback_1&amp;hostname=www.twitch.tv">
                           </object>
+                    <% else %>
+                            Sorry, Video was uploaded incorrectly
+                    <% end %>
                     <% elsif @cast.link.downcase.size == 11 %>
                     <iframe class="castReplay"
                             src="//www.youtube.com/embed/<%= @cast.link %>">
@@ -97,10 +101,29 @@
                          end
                       %>
                       <div class="panel-body" align="center">
-                        <% if @castNow.downcase != '' %>
-                            <iframe class="castReplay"
-                                    src="//www.youtube.com/embed/<%= @castNow %>">
-                            </iframe>
+                        <% if @castNow.downcase != 'na' %>
+                            <% cast = @castNow.downcase %>
+                            <% splitCast = cast.split('/') %>
+                            <% if splitCast[3]!= nil %>
+                                <% splitTime = splitCast[3].split('?t=') %>
+                                <% if splitTime[0].size == 7 %>
+                                    <object type="application/x-shockwave-flash" class="castReplay" name="archive_site_player_1387161686_1_235818_container" data="http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" id="archive_site_player_flash" style="visibility: visible;">
+                                      <param name="allowScriptAccess" value="always">
+                                      <param name="allowNetworking" value="all">
+                                      <param name="allowFullScreen" value="true">
+                                      <param name="wmode" value="transparent">
+                                      <param name="flashvars" value="videoId=<%=splitCast[2]%><%=splitTime[0]%>&amp;chapter_id=<%= splitTime[0] %>&amp;channel=<%= splitCast[1] %>&amp;initCallback=Twitch.player._initCallback_1&amp;hostname=www.twitch.tv">
+                                    </object>
+                                <% else %>
+                                    Sorry, Video was uploaded incorrectly
+                                <% end %>
+                            <% elsif @castNow.downcase.size == 11 %>
+                                <iframe class="castReplay"
+                                        src="//www.youtube.com/embed/<%= @cast.link %>">
+                                </iframe>
+                            <% else %>
+                                Sorry, Video was uploaded incorrectly
+                            <% end %>
                         <% else %>
                             <div style='color: orange'>GAME NOT AVAILABLE</div>
                         <% end %>
