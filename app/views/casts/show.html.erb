@@ -36,7 +36,7 @@
                 <% if @cast.link.downcase != 'na' %>
                     <% cast = @cast.link.downcase %>
                     <% splitCast = cast.split('/') %>
-                    <% if splitCast[3]!= nil %>
+                    <% if splitCast[3]!= nil && splitCast[3] != 'embed'%>
                     <% splitTime = splitCast[3].split('?t=') %>
                     <% if splitTime[0].size == 7 %>
                           <object type="application/x-shockwave-flash" class="castReplay" name="archive_site_player_1387161686_1_235818_container" data="http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" id="archive_site_player_flash" style="visibility: visible;">
@@ -49,9 +49,10 @@
                     <% else %>
                             Sorry, Video was uploaded incorrectly
                     <% end %>
-                    <% elsif @cast.link.downcase.size == 11 %>
+                        <%= @cast.link.downcase %>
+                    <% elsif @cast != nil %>
                     <iframe class="castReplay"
-                            src="//www.youtube.com/embed/<%= @cast.link %>">
+                            src="<%= @cast.link %>">
                     </iframe>
                     <% else %>
                         Sorry, Video was uploaded incorrectly

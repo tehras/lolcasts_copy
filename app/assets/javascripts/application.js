@@ -36,9 +36,13 @@ ajax_bo = function (best_of) {
     previous = i;
     while (n < i + 1) {
         $("#link" + n.toString()).removeAttr("Style");
+        if ($('#link' + n.toString()).val() != null) {
+            formChecker('link'+ n.toString());
+        }
         n++;
     }
 }
+
 
 ajax_match = function (match_type) {
 
@@ -323,7 +327,7 @@ function formFiller() {
                     $('#' + link + '_error').text('Success! Twitch with a link of ' + return_value2 + ' will be displayed!');
                 }
                 else {
-                    $('#' + link + 'Hidden').val(return_value);
+                    $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value);
                     $('#' + link + '_error').attr('Style', 'color:green');
                     $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + ' will be displayed!');
                 }
@@ -405,7 +409,253 @@ function formFiller() {
             return null;
         }
     }
+
 }
+formCheckerTop = function (){
+var red_team_flag = false;
+var blue_team_flag = false;
+var tournament_name_flag = false;
+var caster_flag = false;
+var link1_flag = false;
+var link2_flag = false;
+var link3_flag = false;
+var link4_flag = false;
+var link5_flag = false;
+var link6_flag = false;
+var link7_flag = false;
+callError("red_team", 2, 8);
+callError("blue_team", 2, 8);
+callError("tournament_name", 2, 8);
+callError("caster", 2, 14);
+
+function callError(error, range1, range2) {
+        if ($("#" + error + "_field").val().length < range1 || $('#red_team_field').val().length >= range2) {
+            $("#best_of").attr("Style", "display: none");
+            $("#link1").attr("Style", "display: none");
+            $("#link2").attr("Style", "display: none");
+            $("#link3").attr("Style", "display: none");
+            $("#link4").attr("Style", "display: none");
+            $("#link5").attr("Style", "display: none");
+            $("#link6").attr("Style", "display: none");
+            $("#link7").attr("Style", "display: none");
+            $("#" + error + "_error").removeAttr("Style");
+            $("#" + error + "_error").attr("Style", "color:red");
+            if (eval(error.concat("_flag")) == red_team_flag) {
+                red_team_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == blue_team_flag) {
+                blue_team_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == tournament_name_flag) {
+                tournament_name_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == caster_flag) {
+                caster_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link1_flag) {
+                link1_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link2_flag) {
+                link2_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link3_flag) {
+                link3_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link4_flag) {
+                link4_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link5_flag) {
+                link5_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link6_flag) {
+                link6_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link7_flag) {
+                link7_flag = true;
+            }
+            else {
+
+            }
+        }
+        else {
+            $("#" + error + "_error").removeAttr("Style");
+            $("#" + error + "_error").attr("Style", "color:green");
+            if (eval(error.concat("_flag")) == red_team_flag) {
+                red_team_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == blue_team_flag) {
+                blue_team_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == tournament_name_flag) {
+                tournament_name_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == caster_flag) {
+                caster_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link1_flag) {
+                link1_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link2_flag) {
+                link2_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link3_flag) {
+                link3_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link4_flag) {
+                link4_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link5_flag) {
+                link5_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link6_flag) {
+                link6_flag = true;
+            }
+            else if (eval(error.concat("_flag")) == link7_flag) {
+                link7_flag = true;
+            }
+            else {
+
+            }
+        }
+}
+
+$("#red_team_field").keypress(function () {
+
+    if (caster_flag == true && blue_team_flag == true && tournament_name_flag == true) {
+        $("#best_of").removeAttr("style");
+    }
+})
+$("#blue_team_field").keypress(function () {
+
+    if (red_team_flag == true && caster_flag == true && tournament_name_flag == true) {
+        $("#best_of").removeAttr("style");
+    }
+})
+$("#caster_field").keypress(function () {
+
+    if (red_team_flag == true && blue_team_flag == true && tournament_name_flag == true) {
+        $("#best_of").removeAttr("style");
+    }
+})
+$("#tournament_name_field").keypress(function () {
+
+    if (red_team_flag == true && blue_team_flag == true && caster_flag == true) {
+        $("#best_of").removeAttr("style");
+    }
+})
+}
+
+formChecker = function (link) {
+    var link1_flag;
+    var link2_flag;
+    var link3_flag;
+    var link4_flag;
+    var link5_flag;
+    var link6_flag;
+    var link7_flag;
+    var linkTemp = 'dummy';
+    if (link != 'link1') {
+        linkTemp = $('#' + link + '_field').val().toLowerCase();
+    }
+    var return_value = youtube_parser($('#' + link + '_field').val());
+    var return_value2 = twitch_parser($('#' + link + '_field').val());
+    if (return_value == null && return_value2 == null && linkTemp != 'na') {
+        $('#' + link + '_error').removeAttr('Style');
+        $('#' + link + '_error').attr('Style', 'color:red');
+        $('#' + link + '_error').text('*Not Correct! Ex(http://www.youtube.com/watch?v=XXXXXXXXXXX or http://www.twitch.tv/ZZZZZZZ/Y/XXXXXXX) - Type "NA" if game not available (Not for Game 1)')
+        $('#submit').attr('Style', 'display:none');
+    }
+    else {
+        if (return_value2 != null) {
+            $('#' + link + 'Hidden').val(return_value2);
+            $('#' + link + '_error').attr('Style', 'color:green');
+            $('#' + link + '_error').text('Success! Twitch with a link of ' + return_value2 + ' will be displayed!');
+        }
+        else {
+            $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value);
+            $('#' + link + '_error').attr('Style', 'color:green');
+            $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + ' will be displayed!');
+        }
+        var best_of = $("#best_of_hidden").val();
+        if (eval(link.concat("_flag")) == link1_flag) {
+            link1_flag = true;
+        }
+        else if (eval(link.concat("_flag")) == link2_flag) {
+            link2_flag = true;
+        }
+        else if (eval(link.concat("_flag")) == link3_flag) {
+            link3_flag = true;
+        }
+        else if (eval(link.concat("_flag")) == link4_flag) {
+            link4_flag = true;
+        }
+        else if (eval(link.concat("_flag")) == link5_flag) {
+            link5_flag = true;
+        }
+        else if (eval(link.concat("_flag")) == link6_flag) {
+            link6_flag = true;
+        }
+        else if (eval(link.concat("_flag")) == link7_flag) {
+            link7_flag = true;
+        }
+        else {
+
+        }
+
+        if (best_of == 1) {
+            if (link1_flag == true) {
+                $('#submit').removeAttr('Style');
+            }
+        }
+        else if (best_of == 3) {
+            if (link1_flag == true && link2_flag == true && link3_flag == true) {
+                $('#submit').removeAttr('Style');
+            }
+        }
+        else if (best_of == 5) {
+            if (link1_flag == true && link2_flag == true && link3_flag == true && link4_flag == true && link5_flag == true) {
+                $('#submit').removeAttr('Style');
+            }
+        }
+        else if (best_of == 7) {
+            if (link1_flag == true && link2_flag == true && link3_flag == true && link4_flag == true && link5_flag == true && link6_flag == true && link7_flag == true) {
+                $('#submit').removeAttr('Style');
+            }
+        }
+        else {
+            $('#submit').attr('Style', 'display:none');
+        }
+    }
+
+}
+
+function youtube_parser(url) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[7].length == 11) {
+        return match[7];
+    } else {
+        return null;
+    }
+}
+
+function twitch_parser(url) {
+    var regExp = /^(https?:\/\/)?(.*twitch\.tv\/.*|.*twitch\.tv\/.*\/b\/.*)/i;
+    var match = url.match(regExp);
+    if (match != null) {
+        var match1 = match[2].split('/');
+        if (match1 != null) {
+            var match2 = match1[3].split('?t=');
+            if (match2[0].length == 7) {
+                return match[2];
+            }
+        }
+    } else {
+        return null;
+    }
+}
+
+
 
 
 

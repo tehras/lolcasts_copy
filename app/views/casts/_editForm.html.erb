@@ -92,5 +92,11 @@
 
 <script>
     $(window).ready(formFiller());
+    $(window).ready(formCheckerTop());
+    var n = 1;
+    while (n < 8){
+        $(window).ready(formChecker('link'+ n.toString()));
+        n++
+    }
 
 </script>
