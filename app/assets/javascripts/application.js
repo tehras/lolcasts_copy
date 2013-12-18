@@ -37,7 +37,7 @@ ajax_bo = function (best_of) {
     while (n < i + 1) {
         $("#link" + n.toString()).removeAttr("Style");
         if ($('#link' + n.toString()).val() != null) {
-            formChecker('link'+ n.toString());
+            formChecker('link' + n.toString());
         }
         n++;
     }
@@ -306,6 +306,18 @@ function formFiller() {
     var link6_flag;
     var link7_flag;
 
+    function quickCheck(link) {
+        var return_value = youtube_parser($('#' + link + '_field').val());
+        var return_value2 = twitch_parser($('#' + link + '_field').val());
+        if (return_value != null || return_value2 != null)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     function youtube_checker(link) {
         $('#' + link + '_field').keyup(function () {
             var linkTemp = 'dummy';
@@ -326,7 +338,7 @@ function formFiller() {
                     $('#' + link + '_error').attr('Style', 'color:green');
                     $('#' + link + '_error').text('Success! Twitch with a link of ' + return_value2 + ' will be displayed!');
                 }
-                else {
+                else if (return_value != null) {
                     $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value);
                     $('#' + link + '_error').attr('Style', 'color:green');
                     $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + ' will be displayed!');
@@ -363,17 +375,48 @@ function formFiller() {
                     }
                 }
                 else if (best_of == 3) {
+                    var link1Bool = quickCheck('link1');
+                    var link2Bool = quickCheck('link2');
+                    var link3Bool = quickCheck('link3');
+
                     if (link1_flag == true && link2_flag == true && link3_flag == true) {
                         $('#submit').removeAttr('Style');
                     }
+                    else if ( link1Bool == true && link2Bool == true && link3Bool == true)
+                    {
+                        $('#submit').removeAttr('Style');
+                    }
+                    else {
+
+                    }
                 }
                 else if (best_of == 5) {
+                    var link1Bool = quickCheck('link1');
+                    var link2Bool = quickCheck('link2');
+                    var link3Bool = quickCheck('link3');
+                    var link4Bool = quickCheck('link4');
+                    var link5Bool = quickCheck('link5');
                     if (link1_flag == true && link2_flag == true && link3_flag == true && link4_flag == true && link5_flag == true) {
+                        $('#submit').removeAttr('Style');
+                    }
+                    else if ( link1Bool == true && link2Bool == true && link3Bool == true && link4Bool == true && link5Bool == true)
+                    {
                         $('#submit').removeAttr('Style');
                     }
                 }
                 else if (best_of == 7) {
+                    var link1Bool = quickCheck('link1');
+                    var link2Bool = quickCheck('link2');
+                    var link3Bool = quickCheck('link3');
+                    var link4Bool = quickCheck('link4');
+                    var link5Bool = quickCheck('link5');
+                    var link6Bool = quickCheck('link6');
+                    var link7Bool = quickCheck('link7');
                     if (link1_flag == true && link2_flag == true && link3_flag == true && link4_flag == true && link5_flag == true && link6_flag == true && link7_flag == true) {
+                        $('#submit').removeAttr('Style');
+                    }
+                    else if ( link1Bool == true && link2Bool == true && link3Bool == true && link4Bool == true && link5Bool == true && link7Bool == true && link7Bool == true)
+                    {
                         $('#submit').removeAttr('Style');
                     }
                 }
@@ -411,24 +454,24 @@ function formFiller() {
     }
 
 }
-formCheckerTop = function (){
-var red_team_flag = false;
-var blue_team_flag = false;
-var tournament_name_flag = false;
-var caster_flag = false;
-var link1_flag = false;
-var link2_flag = false;
-var link3_flag = false;
-var link4_flag = false;
-var link5_flag = false;
-var link6_flag = false;
-var link7_flag = false;
-callError("red_team", 2, 15);
-callError("blue_team", 2, 15);
-callError("tournament_name", 2, 20);
-callError("caster", 2, 15);
+formCheckerTop = function () {
+    var red_team_flag = false;
+    var blue_team_flag = false;
+    var tournament_name_flag = false;
+    var caster_flag = false;
+    var link1_flag = false;
+    var link2_flag = false;
+    var link3_flag = false;
+    var link4_flag = false;
+    var link5_flag = false;
+    var link6_flag = false;
+    var link7_flag = false;
+    callError("red_team", 2, 15);
+    callError("blue_team", 2, 15);
+    callError("tournament_name", 2, 20);
+    callError("caster", 2, 15);
 
-function callError(error, range1, range2) {
+    function callError(error, range1, range2) {
         if ($("#" + error + "_field").val().length < range1 || $('#red_team_field').val().length >= range2) {
             $("#best_of").attr("Style", "display: none");
             $("#link1").attr("Style", "display: none");
@@ -517,35 +560,47 @@ function callError(error, range1, range2) {
 
             }
         }
-}
-
-$("#red_team_field").keypress(function () {
-
-    if (caster_flag == true && blue_team_flag == true && tournament_name_flag == true) {
-        $("#best_of").removeAttr("style");
     }
-})
-$("#blue_team_field").keypress(function () {
 
-    if (red_team_flag == true && caster_flag == true && tournament_name_flag == true) {
-        $("#best_of").removeAttr("style");
-    }
-})
-$("#caster_field").keypress(function () {
+    $("#red_team_field").keypress(function () {
 
-    if (red_team_flag == true && blue_team_flag == true && tournament_name_flag == true) {
-        $("#best_of").removeAttr("style");
-    }
-})
-$("#tournament_name_field").keypress(function () {
+        if (caster_flag == true && blue_team_flag == true && tournament_name_flag == true) {
+            $("#best_of").removeAttr("style");
+        }
+    })
+    $("#blue_team_field").keypress(function () {
 
-    if (red_team_flag == true && blue_team_flag == true && caster_flag == true) {
-        $("#best_of").removeAttr("style");
-    }
-})
+        if (red_team_flag == true && caster_flag == true && tournament_name_flag == true) {
+            $("#best_of").removeAttr("style");
+        }
+    })
+    $("#caster_field").keypress(function () {
+
+        if (red_team_flag == true && blue_team_flag == true && tournament_name_flag == true) {
+            $("#best_of").removeAttr("style");
+        }
+    })
+    $("#tournament_name_field").keypress(function () {
+
+        if (red_team_flag == true && blue_team_flag == true && caster_flag == true) {
+            $("#best_of").removeAttr("style");
+        }
+    })
 }
 
 formChecker = function (link) {
+    function quickCheck(link) {
+        var return_value = youtube_parser($('#' + link + '_field').val());
+        var return_value2 = twitch_parser($('#' + link + '_field').val());
+        if (return_value != null || return_value2 != null)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     var link1_flag;
     var link2_flag;
     var link3_flag;
@@ -608,17 +663,48 @@ formChecker = function (link) {
             }
         }
         else if (best_of == 3) {
+            var link1Bool = quickCheck('link1');
+            var link2Bool = quickCheck('link2');
+            var link3Bool = quickCheck('link3');
+
             if (link1_flag == true && link2_flag == true && link3_flag == true) {
                 $('#submit').removeAttr('Style');
             }
+            else if ( link1Bool == true && link2Bool == true && link3Bool == true)
+            {
+                $('#submit').removeAttr('Style');
+            }
+            else {
+
+            }
         }
         else if (best_of == 5) {
+            var link1Bool = quickCheck('link1');
+            var link2Bool = quickCheck('link2');
+            var link3Bool = quickCheck('link3');
+            var link4Bool = quickCheck('link4');
+            var link5Bool = quickCheck('link5');
             if (link1_flag == true && link2_flag == true && link3_flag == true && link4_flag == true && link5_flag == true) {
+                $('#submit').removeAttr('Style');
+            }
+            else if ( link1Bool == true && link2Bool == true && link3Bool == true && link4Bool == true && link5Bool == true)
+            {
                 $('#submit').removeAttr('Style');
             }
         }
         else if (best_of == 7) {
+            var link1Bool = quickCheck('link1');
+            var link2Bool = quickCheck('link2');
+            var link3Bool = quickCheck('link3');
+            var link4Bool = quickCheck('link4');
+            var link5Bool = quickCheck('link5');
+            var link6Bool = quickCheck('link6');
+            var link7Bool = quickCheck('link7');
             if (link1_flag == true && link2_flag == true && link3_flag == true && link4_flag == true && link5_flag == true && link6_flag == true && link7_flag == true) {
+                $('#submit').removeAttr('Style');
+            }
+            else if ( link1Bool == true && link2Bool == true && link3Bool == true && link4Bool == true && link5Bool == true && link7Bool == true && link7Bool == true)
+            {
                 $('#submit').removeAttr('Style');
             }
         }
@@ -653,6 +739,118 @@ function twitch_parser(url) {
     } else {
         return null;
     }
+
+}
+
+checkFields = function () {
+    var matchTypeFlag = false;
+    var redTeamFlag = false;
+    var blueTeamFlag = false;
+    var tournamentFlag = false;
+    var casterFlag = false;
+    if ($('#match_type').val() != null) {
+        if ($('#match_type').val() == '3v3') {
+            $("#5v5").removeClass("btn-success");
+            $("#3v3").addClass("btn-success");
+            $("#match_type").val('3v3');
+            $("#red_team").attr("style", 'display:block');
+            $("#blue_team").attr("style", 'display:block');
+            $("#caster").attr("style", 'display:block');
+            $("#tournament_name").attr("style", 'display:block');
+            matchTypeFlag = true;
+        }
+        else if ($('#match_type').val() == '5v5') {
+            $("#3v3").removeClass("btn-success");
+            $("#5v5").addClass("btn-success");
+            $("#match_type").val('5v5');
+            $("#red_team").attr("style", 'display:block');
+            $("#blue_team").attr("style", 'display:block');
+            $("#caster").attr("style", 'display:block');
+            $("#tournament_name").attr("style", 'display:block');
+            matchTypeFlag = true;
+        }
+    }
+    if ($('#red_team_field').val() != null) {
+        if ($('#red_team_field').val().length < 2 && $('#red_team_field').val().length > 15) {
+            $("#best_of").attr("Style", "display: none");
+            $("#link1").attr("Style", "display: none");
+            $("#link2").attr("Style", "display: none");
+            $("#link3").attr("Style", "display: none");
+            $("#link4").attr("Style", "display: none");
+            $("#link5").attr("Style", "display: none");
+            $("#link6").attr("Style", "display: none");
+            $("#link7").attr("Style", "display: none");
+            $("#red_team_error").removeAttr("Style");
+            $("#red_team_error").attr("Style", "color:red");
+        }
+        else {
+            redTeamFlag = true;
+        }
+    }
+    if ($('#blue_team_field').val() != null) {
+        if ($('#blue_team_field').val().length < 2 && $('#blue_team_field').val().length > 15) {
+            $("#best_of").attr("Style", "display: none");
+            $("#link1").attr("Style", "display: none");
+            $("#link2").attr("Style", "display: none");
+            $("#link3").attr("Style", "display: none");
+            $("#link4").attr("Style", "display: none");
+            $("#link5").attr("Style", "display: none");
+            $("#link6").attr("Style", "display: none");
+            $("#link7").attr("Style", "display: none");
+            $("#blue_team_error").removeAttr("Style");
+            $("#blue_team_error").attr("Style", "color:red");
+        }
+        else {
+            blueTeamFlag = true;
+        }
+    }
+
+    if ($('#tournament_name').val() != null) {
+        if ($('#tournament_name').val().length < 2 && $('#tournament_name').val().length > 15) {
+            $("#best_of").attr("Style", "display: none");
+            $("#link1").attr("Style", "display: none");
+            $("#link2").attr("Style", "display: none");
+            $("#link3").attr("Style", "display: none");
+            $("#link4").attr("Style", "display: none");
+            $("#link5").attr("Style", "display: none");
+            $("#link6").attr("Style", "display: none");
+            $("#link7").attr("Style", "display: none");
+            $("#tournament_name_error").removeAttr("Style");
+            $("#tournament_name_error").attr("Style", "color:red");
+        }
+        else {
+            tournamentFlag = true;
+        }
+    }
+    if ($('#caster').val() != null) {
+        if ($('#tournament_name').val().length < 2 && $('#caster').val().length > 15) {
+            $("#best_of").attr("Style", "display: none");
+            $("#link1").attr("Style", "display: none");
+            $("#link2").attr("Style", "display: none");
+            $("#link3").attr("Style", "display: none");
+            $("#link4").attr("Style", "display: none");
+            $("#link5").attr("Style", "display: none");
+            $("#link6").attr("Style", "display: none");
+            $("#link7").attr("Style", "display: none");
+            $("#caster_error").removeAttr("Style");
+            $("#caster_error").attr("Style", "color:red");
+        }
+        else {
+            casterFlag = true;
+        }
+    }
+    if ($('#best_of_hidden').val() != null)
+    {
+    }
+
+    $('#link1Hidden').val()
+    $('#link2Hidden').val()
+    $('#link3Hidden').val()
+    $('#link4Hidden').val()
+    $('#link5Hidden').val()
+    $('#link6Hidden').val()
+    $('#link7Hidden').val()
+    $('#submit').val()
 }
 
 
