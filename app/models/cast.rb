@@ -5,15 +5,15 @@ class Cast < ActiveRecord::Base
   acts_as_votable
   acts_as_taggable
 
-   validates :red_team, presence: true, length: { in: 2..8,
+   validates :red_team, presence: true, length: { in: 2..15,
     too_short: "must have at least 2 letters",
     too_long: "must be less than 9 letters"}
-   validates :blue_team, presence: true, length: { in: 2..8 ,
+   validates :blue_team, presence: true, length: { in: 2..15 ,
                                                    too_short: "must have at least 2 letters",
-                                                   too_long: "must be less than 9 letters"}
-   validates :caster, presence: true, length: { in: 2..15 ,
+                                                   too_long: "must be less than 15 letters"}
+   validates :caster, presence: true, length: { in: 2..20 ,
                                                 too_short: "must have at least 2 letters",
-                                                too_long: "must be less than 15 letters"}
+                                                too_long: "must be less than 20 letters"}
    validates :tournament_name, presence: true
 
 

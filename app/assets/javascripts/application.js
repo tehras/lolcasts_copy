@@ -72,10 +72,10 @@ ajax_match = function (match_type) {
     var link5_flag = false;
     var link6_flag = false;
     var link7_flag = false;
-    callError("red_team", 2, 8);
-    callError("blue_team", 2, 8);
-    callError("tournament_name", 2, 8);
-    callError("caster", 2, 14);
+    callError("red_team", 2, 15);
+    callError("blue_team", 2, 15);
+    callError("tournament_name", 2, 15);
+    callError("caster", 2, 15);
 
     function callError(error, range1, range2) {
         $("#" + error + "_field").keyup(function () {
@@ -423,10 +423,10 @@ var link4_flag = false;
 var link5_flag = false;
 var link6_flag = false;
 var link7_flag = false;
-callError("red_team", 2, 8);
-callError("blue_team", 2, 8);
-callError("tournament_name", 2, 8);
-callError("caster", 2, 14);
+callError("red_team", 2, 15);
+callError("blue_team", 2, 15);
+callError("tournament_name", 2, 20);
+callError("caster", 2, 15);
 
 function callError(error, range1, range2) {
         if ($("#" + error + "_field").val().length < range1 || $('#red_team_field').val().length >= range2) {
