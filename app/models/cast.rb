@@ -14,9 +14,7 @@ class Cast < ActiveRecord::Base
    validates :caster, presence: true, length: { in: 2..15 ,
                                                 too_short: "must have at least 2 letters",
                                                 too_long: "must be less than 15 letters"}
-   validates :tournament_name, presence: true, length: { in: 2..8 ,
-                                                         too_short: "must have at least 2 letters",
-                                                         too_long: "must be less than 9 letters"}
+   validates :tournament_name, presence: true
 
 
   def self.search(search)
