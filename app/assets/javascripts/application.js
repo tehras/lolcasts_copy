@@ -338,6 +338,12 @@ function formFiller() {
                     $('#' + link + '_error').attr('Style', 'color:green');
                     $('#' + link + '_error').text('Success! Twitch with a link of ' + return_value2 + ' will be displayed!');
                 }
+                else if (linkTemp == 'na')
+                {
+                    $('#' + link + 'Hidden').val('NA');
+                    $('#' + link + '_error').attr('Style', 'color:green');
+                    $('#' + link + '_error').text('Success! Game Was Not Played, Video Will Not Be Displayed');
+                }
                 else if (return_value != null) {
                     $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value);
                     $('#' + link + '_error').attr('Style', 'color:green');
@@ -625,6 +631,12 @@ formChecker = function (link) {
             $('#' + link + 'Hidden').val(return_value2);
             $('#' + link + '_error').attr('Style', 'color:green');
             $('#' + link + '_error').text('Success! Twitch with a link of ' + return_value2 + ' will be displayed!');
+        }
+        else if (linkTemp == 'na')
+        {
+            $('#' + link + 'Hidden').val('na');
+            $('#' + link + '_error').attr('Style', 'color:green');
+            $('#' + link + '_error').text('Success! Game Was Not Played and Will be Displayed as Such!');
         }
         else {
             $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value);

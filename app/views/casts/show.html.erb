@@ -102,6 +102,7 @@
                          end
                       %>
                       <div class="panel-body" align="center">
+                        <%= @castNow %>
                         <% if @castNow.downcase != 'na' %>
                             <% cast = @castNow.downcase %>
                             <% splitCast = cast.split('/') %>
