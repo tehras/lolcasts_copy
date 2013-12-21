@@ -35,7 +35,7 @@
         <% if Cast.where(user_id: current_user).count != 0 %>
             <li class="dropdown <%= 'active' if params[:action] == 'edit' && controller_path == 'casts' || params[:action] == 'edit_casts' %>" style="background-color: #444444" >
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Edit Casts <b class="caret"></b></a>
-              <ul class="dropdown-menu" style="background-color: #444444">
+              <ul class="dropdown-menu" style="background-color: #444444; width: 350px">
                     <li>
                       <span style="padding-left:20px; color: coral">Most Recent Created:</span>
                       </li>
