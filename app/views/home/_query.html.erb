@@ -1,4 +1,4 @@
-<table class="table table-condensed" style="padding-right:5px; margin-bottom:0px">
+<table class="table table-condensed" style="padding-right:5px; margin-bottom:0px;border-collapse:separate; border-spacing:0px 3px; ">
     <tbody>
     <% count = 0 %>
     <% if @cast_query != nil %>
@@ -6,8 +6,9 @@
         <% cast_id = cast.id %>
         <% cast_total = cast.upvotes.size - cast.downvotes.size %>
         <% count = count + 1 %>
-        <tr style="border-top-color:#3498db;margin-right:5px">
-          <td style="max-width:120px;border-top-color:coral">
+
+        <tr style="border-top-color:#3498db;margin-right:5px;background-color: rgba(0,0,0, 0.15);margin-top:10px;border-right:1px solid coral;border-left:1px solid coral; border-right:1px solid coral;">
+          <td style="max-width:120px;border-top-color:coral;border-bottom: 1px solid coral; border-left: 1px solid coral; border-radius:4px">
             <% if !user_signed_in? %>
                 <span class="glyphicon glyphicon-arrow-up"></span>
 
@@ -61,7 +62,8 @@
             <% end %>
             <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "color:orange" do %>
                 </td>
-                <td id="matchTypeCSS" style="width:80%;color:coral;border-top-color:coral">
+
+                <td id="matchTypeCSS" style="width:80%;color:coral;border-top-color:coral;border-bottom:1px solid coral; border-right: 1px solid coral;border-radius:4px">
                   <%= link_to cast, method: "get", :class => "btn btn-xs", style: "color:orange; whitespace:normal" do %>
                   <span id="matchTypeCSS">(<%= cast.match_type %>)</span>
                   <span id="redTeamCSS"><%= cast.red_team %></span> vs <span id="blueTeamCSS"><%= cast.blue_team %></span>
@@ -70,8 +72,11 @@
                   <span id="casterCSS"><%= cast.caster %></span>
                   <% end %>
                 </td>
+
                 </tr>
-            <% end %>
+
+
+    <% end %>
     <% end %>
     </tbody>
   </table>

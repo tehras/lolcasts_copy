@@ -1,4 +1,4 @@
-<div class="col-sm-4 registration-right-section animated fadeInUp">
+<div class="col-md-4 registration-right-section animated fadeInUp">
   <div class="reg-content">
     <div class="textbox-wrap" style="padding-right:30px;padding-left:30px">
       <h4 style="margin-top:0px;text-align: center;color:#3498db">TOP TAGS</h4>
@@ -6,7 +6,7 @@
           No Tags Found!
       <% else %>
           <% tag_cloud Cast.tag_counts_on(:tags).order('count desc').limit(20).shuffle, %w[s m l] do |tag, css_class| %>
-              <%= link_to tag.name, tag_path(tag.name), class: css_class + ' adjText' %> |
+              <%= link_to tag.name, tag_path(tag.name), class: css_class + ' adjText' %>
           <% end %>
       <% end %>
     </div>

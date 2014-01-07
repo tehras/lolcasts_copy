@@ -1,4 +1,6 @@
-
+div.control > input{
+    width:100%;
+}
 .dropdown-menu > li > a {
      display: block;
      padding: 3px 20px;
@@ -499,10 +501,12 @@ b.replay:hover{
 }
 
 .string.required {
-       height:34px;
+    height:34px;
+    width:100%;
 }
 .password {
     height:34px;
+    width:100%;
 }
 
 html {
