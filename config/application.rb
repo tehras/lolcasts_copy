@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-config.assets.initialize_on_precompile = false
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
@@ -12,6 +12,7 @@ ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
 
 module Lolcasts
   class Application < Rails::Application
+    config.assets.initialize_on_precompile = false
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
