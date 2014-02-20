@@ -8,7 +8,7 @@
         <% count = count + 1 %>
 
         <tr style="border-top-color:#3498db;margin-right:5px;background-color: rgba(0,0,0, 0.15);margin-top:10px;border-right:1px solid coral;border-left:1px solid coral; border-right:1px solid coral;">
-          <td style="max-width:120px;border-top-color:coral;border-bottom: 1px solid coral; border-left: 1px solid coral; border-radius:4px">
+          <td style="max-width:60px;border-top-color:coral;border-bottom: 1px solid coral; border-left: 1px solid coral; border-radius:4px">
             <% if !user_signed_in? %>
                 <span class="glyphicon glyphicon-arrow-up"></span>
 
@@ -60,7 +60,6 @@
                   <span class="glyphicon glyphicon-arrow-down"></span>
                 </button>
             <% end %>
-            <%= link_to cast, method: "get", :type => "button", :class => "btn btn-xs", style: "color:orange" do %>
                 </td>
 
                 <td id="matchTypeCSS" style="width:80%;color:coral;border-top-color:coral;border-bottom:1px solid coral; border-right: 1px solid coral;border-radius:4px">
@@ -74,9 +73,6 @@
                 </td>
 
                 </tr>
-
-
-    <% end %>
     <% end %>
     </tbody>
   </table>

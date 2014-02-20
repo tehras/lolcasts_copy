@@ -639,9 +639,10 @@ formChecker = function (link) {
             $('#' + link + '_error').text('Success! Game Was Not Played and Will be Displayed as Such!');
         }
         else {
-            $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value);
+            var time = getTime(link);
+            $('#' + link + 'Hidden').val('//www.youtube.com/embed/' + return_value + time);
             $('#' + link + '_error').attr('Style', 'color:green');
-            $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + ' will be displayed!');
+            $('#' + link + '_error').text('Success! YouTube Video with a link of ' + return_value + time + ' will be displayed!');
         }
         var best_of = $("#best_of_hidden").val();
         if (eval(link.concat("_flag")) == link1_flag) {
@@ -863,6 +864,26 @@ checkFields = function () {
     $('#link6Hidden').val()
     $('#link7Hidden').val()
     $('#submit').val()
+}
+
+function getTime(num){
+    var link = "";
+    var min = $("#"+num+"_hour").val();
+    var sec = $("#"+num+"_min").val();
+    if (sec != null || min != null)
+    {
+        alert("here");
+        if (min == null)
+        {
+            min = 00;
+        }
+        if (sec == null)
+        {
+            sec = 00;
+        }
+        link = "?start="+min+"m"+sec+"s"
+    }
+    return link;
 }
 
 

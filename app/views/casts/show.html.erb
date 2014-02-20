@@ -34,6 +34,7 @@
             <div id="collapseOne" class="panel-collapse collapse">
               <div class="panel-body" align='center'>
                 <% if @cast.link.downcase != 'na' %>
+                    <%= @cast.link %>
                     <% cast = @cast.link.downcase %>
                     <% splitCast = cast.split('/') %>
                     <% if splitCast[3]!= nil && splitCast[3] != 'embed'%>
@@ -49,8 +50,8 @@
                     <% else %>
                             Sorry, Video was uploaded incorrectly
                     <% end %>
-                        <%= @cast.link.downcase %>
-                    <% elsif @cast.link.downcase.split('embed/')[1].size == 11 %>
+
+                    <% elsif @cast.link.downcase.split('embed/')[1].split('?start=')[0].size == 11 %>
                     <iframe class="castReplay"
                             src="<%= @cast.link %>">
                     </iframe>
@@ -118,7 +119,7 @@
                                 <% else %>
                                     Sorry, Video was uploaded incorrectly
                                 <% end %>
-                            <% elsif @castNow.downcase.split('embed/')[1].size == 11 %>
+                            <% elsif @castNow.downcase.split('embed/')[1].split('?start=')[0].size == 11 %>
                                 <iframe class="castReplay"
                                         src="<%= @castNow %>">
                                 </iframe>
